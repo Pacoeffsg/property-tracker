@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Property Tracker</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.x/dist/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f7f6f3;
+    --surface: #ffffff;
+    --surface2: #f1f0ec;
+    --border: rgba(0,0,0,0.1);
+    --border2: rgba(0,0,0,0.18);
+    --text: #1a1a18;
+    --text2: #6b6b67;
+    --text3: #9b9b96;
+    --accent: #1a5c3a;
+    --accent-bg: #e8f4ed;
+    --accent-text: #0f3d26;
+    --danger-bg: #fdf0ef;
+    --danger-text: #8c2a1e;
+    --info-bg: #edf3fb;
+    --info-text: #1a3d6e;
+    --amber: #c47c00;
+    --amber-bg: #fef6e4;
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .header {
+    background: var(--surface);
+    border-bottom: 0.5px solid var(--border);
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .header-left { display: flex; align-items: center; gap: 12px; }
+  .logo { font-size: 16px; font-weight: 600; color: var(--text); }
+  .logo span { color: var(--accent); }
+  .header-right { display: flex; gap: 8px; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+  .stat { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 14px 16px; }
+  .stat .label { font-size: 11px; color: var(--text3); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px; }
+  .stat .val { font-size: 24px; font-weight: 600; color: var(--text); }
+  .stat .sub { font-size: 11px; color: var(--text2); margin-top: 2px; }
+
+  .toolbar { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; align-items: center; }
+  .toolbar input[type="text"], .toolbar select {
+    height: 36px;
+    padding: 0 12px;
+    border: 0.5px solid var(--border2);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 13px;
+    outline: none;
+    font-family: inherit;
+  }
+  .toolbar input[type="text"] { flex: 1; min-width: 200px; }
+  .toolbar input[type="text"]:focus, .toolbar select:focus { border-color: var(--accent); }
+  .toolbar select { appearance: none; padding-right: 28px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%236b6b67' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; }
+
+  .btn { height: 36px; padding: 0 14px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); background: transparent; color: var(--text); font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; font-family: inherit; transition: background 0.1s; white-space: nowrap; }
+  .btn:hover { background: var(--surface2); }
+  .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .btn-primary:hover { background: #144f30; }
+  .btn-sm { height: 28px; padding: 0 10px; font-size: 12px; }
+
+  .add-form { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 16px; margin-bottom: 16px; display: none; }
+  .add-form.visible { display: block; }
+  .add-form h3 { font-size: 13px; font-weight: 600; margin-bottom: 12px; color: var(--text2); text-transform: uppercase; letter-spacing: 0.04em; }
+  .form-row { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+  .form-row2 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+  .form-row3 { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+  .form-row input, .form-row2 input, .form-row3 input {
+    height: 34px; padding: 0 10px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); font-size: 13px; font-family: inherit; background: var(--bg); color: var(--text); outline: none;
+  }
+  .form-row input:focus, .form-row2 input:focus, .form-row3 input:focus { border-color: var(--accent); background: var(--surface); }
+  .form-row input::placeholder, .form-row2 input::placeholder, .form-row3 input::placeholder { color: var(--text3); }
+  .form-actions { display: flex; gap: 8px; margin-top: 12px; }
+
+  .cards { display: flex; flex-direction: column; gap: 10px; }
+
+  .card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    transition: border-color 0.15s;
+    border-left: 3px solid transparent;
+  }
+  .card:hover { border-color: var(--border2); }
+  .card.inspected { border-left-color: var(--accent); }
+  .card.passed { border-left-color: var(--text3); opacity: 0.7; }
+
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+  .card-addr-wrap { flex: 1; min-width: 0; }
+  .card-street { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 2px; display: flex; align-items: center; gap: 8px; }
+  .card-suburb { font-size: 12px; color: var(--text2); }
+  .card-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .price { font-size: 15px; font-weight: 600; color: var(--text); }
+  .price.empty { color: var(--text3); font-weight: 400; font-size: 13px; }
+
+  .card-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+  .meta-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--text2); }
+  .meta-item i { font-size: 14px; color: var(--text3); }
+  .meta-item span.val { color: var(--text); font-weight: 500; }
+  .meta-item span.empty-val { color: var(--text3); }
+
+  .card-bottom { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .card-bottom .spacer { flex: 1; }
+
+  .tag { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 500; padding: 3px 8px; border-radius: 20px; letter-spacing: 0.02em; }
+  .tag-active { background: var(--info-bg); color: var(--info-text); }
+  .tag-inspected { background: var(--accent-bg); color: var(--accent-text); }
+  .tag-passed { background: var(--surface2); color: var(--text2); }
+  .tag-purchased { background: var(--amber-bg); color: var(--amber); }
+
+  .rating { display: flex; gap: 2px; }
+  .star { cursor: pointer; font-size: 18px; color: var(--text3); line-height: 1; transition: color 0.1s; user-select: none; }
+  .star.on { color: var(--amber); }
+  .star:hover { color: var(--amber); }
+
+  .notes { margin-top: 10px; border-top: 0.5px solid var(--border); padding-top: 10px; }
+  .notes input {
+    width: 100%; height: 30px; padding: 0 10px; border: 0.5px solid var(--border); border-radius: var(--radius-sm);
+    font-size: 12px; font-family: inherit; background: var(--bg); color: var(--text); outline: none;
+  }
+  .notes input:focus { border-color: var(--accent); background: var(--surface); }
+  .notes input::placeholder { color: var(--text3); }
+
+  .link-btn { font-size: 12px; color: var(--info-text); text-decoration: none; display: inline-flex; align-items: center; gap: 3px; }
+  .link-btn:hover { text-decoration: underline; }
+  .link-btn i { font-size: 13px; }
+
+  .divider { width: 1px; height: 12px; background: var(--border2); }
+
+  .edit-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 100; align-items: center; justify-content: center; }
+  .edit-overlay.open { display: flex; }
+  .edit-modal { background: var(--surface); border-radius: var(--radius); padding: 24px; width: 100%; max-width: 480px; max-height: 90vh; overflow-y: auto; margin: 16px; }
+  .edit-modal h2 { font-size: 16px; font-weight: 600; margin-bottom: 16px; }
+  .field-group { margin-bottom: 12px; }
+  .field-group label { display: block; font-size: 11px; color: var(--text2); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .field-group input, .field-group select, .field-group textarea {
+    width: 100%; height: 36px; padding: 0 10px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm);
+    font-size: 13px; font-family: inherit; background: var(--bg); color: var(--text); outline: none;
+  }
+  .field-group textarea { height: 70px; padding: 8px 10px; resize: vertical; }
+  .field-group input:focus, .field-group select:focus, .field-group textarea:focus { border-color: var(--accent); background: var(--surface); }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .modal-actions { display: flex; gap: 8px; margin-top: 20px; }
+
+  .empty-state { text-align: center; padding: 48px 16px; color: var(--text2); }
+  .empty-state i { font-size: 40px; color: var(--text3); display: block; margin-bottom: 12px; }
+  .empty-state p { font-size: 14px; }
+
+  .toast { position: fixed; bottom: 24px; right: 24px; background: var(--text); color: #fff; padding: 10px 16px; border-radius: var(--radius-sm); font-size: 13px; z-index: 200; opacity: 0; transform: translateY(8px); transition: all 0.2s; pointer-events: none; }
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 600px) {
+    .header { padding: 14px 16px; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .form-row { grid-template-columns: 1fr; }
+    .form-row2 { grid-template-columns: repeat(3, 1fr); }
+    .card-top { flex-direction: column; gap: 8px; }
+    .card-right { width: 100%; justify-content: space-between; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <i class="ti ti-home-2" style="font-size:20px;color:var(--accent)" aria-hidden="true"></i>
+    <div class="logo">Property <span>Tracker</span></div>
+  </div>
+  <div class="header-right">
+    <button class="btn" onclick="exportCSV()"><i class="ti ti-download" aria-hidden="true"></i> Export CSV</button>
+    <button class="btn btn-primary" onclick="toggleAddForm()"><i class="ti ti-plus" aria-hidden="true"></i> Add property</button>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="stats" id="stats"></div>
+
+  <div class="toolbar">
+    <input type="text" id="search" placeholder="Search address or suburb…" oninput="render()">
+    <select id="filter-status" onchange="render()">
+      <option value="">All statuses</option>
+      <option value="active">Active</option>
+      <option value="inspected">Inspected</option>
+      <option value="passed">Passed</option>
+    </select>
+    <select id="sort" onchange="render()">
+      <option value="default">Order added</option>
+      <option value="price-asc">Price: low → high</option>
+      <option value="price-desc">Price: high → low</option>
+      <option value="rating">Rating</option>
+    </select>
+  </div>
+
+  <div class="add-form" id="add-form">
+    <h3>New property</h3>
+    <div class="form-row">
+      <input type="text" id="f-addr" placeholder="Street address (e.g. 12 Oak Street)">
+      <input type="text" id="f-suburb" placeholder="Suburb">
+      <input type="text" id="f-price" placeholder="Price (e.g. $1.25m)">
+    </div>
+    <div class="form-row2">
+      <input type="text" id="f-land" placeholder="Land m²">
+      <input type="text" id="f-beds" placeholder="Beds">
+      <input type="text" id="f-baths" placeholder="Baths">
+      <input type="text" id="f-cars" placeholder="Cars">
+      <input type="text" id="f-url" placeholder="Listing URL">
+    </div>
+    <div class="form-row3">
+      <input type="text" id="f-inspection" placeholder="Inspection date & time (e.g. Sat 14 Jun, 11:00am)">
+    </div>
+    <div class="form-actions">
+      <button class="btn btn-primary" onclick="addProperty()"><i class="ti ti-check" aria-hidden="true"></i> Add</button>
+      <button class="btn" onclick="toggleAddForm()">Cancel</button>
+    </div>
+  </div>
+
+  <div class="cards" id="cards"></div>
+</div>
+
+<!-- Edit modal -->
+<div class="edit-overlay" id="edit-overlay" onclick="closeEdit(event)">
+  <div class="edit-modal" onclick="event.stopPropagation()">
+    <h2>Edit property</h2>
+    <div class="field-group"><label>Street address</label><input type="text" id="e-addr"></div>
+    <div class="field-row">
+      <div class="field-group"><label>Suburb</label><input type="text" id="e-suburb"></div>
+      <div class="field-group"><label>Price</label><input type="text" id="e-price"></div>
+    </div>
+    <div class="field-row">
+      <div class="field-group"><label>Land size (m²)</label><input type="text" id="e-land"></div>
+      <div class="field-group"><label>Listing URL</label><input type="text" id="e-url"></div>
+    </div>
+    <div class="field-row">
+      <div class="field-group"><label>Beds</label><input type="text" id="e-beds"></div>
+      <div class="field-group"><label>Baths</label><input type="text" id="e-baths"></div>
+    </div>
+    <div class="field-row">
+      <div class="field-group"><label>Car spaces</label><input type="text" id="e-cars"></div>
+      <div class="field-group"><label>Status</label>
+        <select id="e-status">
+          <option value="active">Active</option>
+          <option value="inspected">Inspected</option>
+          <option value="passed">Passed</option>
+          <option value="purchased">Purchased</option>
+        </select>
+      </div>
+    </div>
+    <div class="field-group"><label>Inspection date & time</label><input type="text" id="e-inspection"></div>
+    <div class="field-group"><label>Notes</label><textarea id="e-notes" placeholder="Observations, pros/cons, agent contact…"></textarea></div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="saveEdit()"><i class="ti ti-check" aria-hidden="true"></i> Save changes</button>
+      <button class="btn" onclick="closeEdit()">Cancel</button>
+      <button class="btn" style="margin-left:auto;color:var(--danger-text);border-color:transparent;" onclick="deleteProperty()"><i class="ti ti-trash" aria-hidden="true"></i> Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const STORE_KEY = 'prop_tracker_standalone_v1';
+
+const seed = [
+  { id:1, address:'—', suburb:'Merrylands', url:'https://www.realestate.com.au/property-house-nsw-merrylands-151094996', price:'', land:'', beds:'', baths:'', cars:'', inspection:'', inspected:false, status:'active', rating:0, notes:'' },
+  { id:2, address:'—', suburb:'Engadine', url:'https://www.realestate.com.au/property-house-nsw-engadine-151366840', price:'', land:'', beds:'', baths:'', cars:'', inspection:'', inspected:false, status:'active', rating:0, notes:'' },
+  { id:3, address:'—', suburb:'Kirrawee', url:'https://www.realestate.com.au/property-house-nsw-kirrawee-151118220', price:'', land:'', beds:'', baths:'', cars:'', inspection:'', inspected:false, status:'active', rating:0, notes:'' },
+  { id:4, address:'—', suburb:'Padstow Heights', url:'https://www.realestate.com.au/property-house-nsw-padstow+heights-151297004', price:'', land:'', beds:'', baths:'', cars:'', inspection:'', inspected:false, status:'active', rating:0, notes:'' },
+  { id:5, address:'— (2)', suburb:'Engadine', url:'https://www.realestate.com.au/property-house-nsw-engadine-151383988', price:'', land:'', beds:'', baths:'', cars:'', inspection:'', inspected:false, status:'active', rating:0, notes:'' },
+  { id:6, address:'—', suburb:'East Hills', url:'https://www.realestate.com.au/property-house-nsw-east+hills-151361452', price:'', land:'', beds:'', baths:'', cars:'', inspection:'', inspected:false, status:'active', rating:0, notes:'' },
+];
+
+let props = [];
+let editId = null;
+
+function load() {
+  try {
+    const raw = localStorage.getItem(STORE_KEY);
+    props = raw ? JSON.parse(raw) : seed;
+  } catch { props = seed; }
+}
+
+function save() {
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(props)); } catch {}
+}
+
+function parsePrice(p) {
+  if (!p) return null;
+  let s = String(p).toLowerCase().replace(/[$,\s]/g, '');
+  let mult = 1;
+  if (s.endsWith('m')) { mult = 1e6; s = s.slice(0,-1); }
+  else if (s.endsWith('k')) { mult = 1e3; s = s.slice(0,-1); }
+  const n = parseFloat(s);
+  return isNaN(n) ? null : n * mult;
+}
+
+function fmtPrice(p) {
+  const n = parsePrice(p);
+  if (!n) return null;
+  if (n >= 1e6) return '$' + (n/1e6).toFixed(n%1e6===0?0:2) + 'm';
+  if (n >= 1e3) return '$' + Math.round(n/1e3) + 'k';
+  return '$' + Math.round(n).toLocaleString();
+}
+
+function tagHtml(p) {
+  if (p.inspected || p.status === 'inspected') return '<span class="tag tag-inspected"><i class="ti ti-check" style="font-size:11px"></i> Inspected</span>';
+  if (p.status === 'passed') return '<span class="tag tag-passed">Passed</span>';
+  if (p.status === 'purchased') return '<span class="tag tag-purchased"><i class="ti ti-home-check" style="font-size:11px"></i> Purchased</span>';
+  return '<span class="tag tag-active">Active</span>';
+}
+
+function metaItem(icon, val, placeholder) {
+  if (val) return `<div class="meta-item"><i class="ti ti-${icon}" aria-hidden="true"></i><span class="val">${val}</span></div>`;
+  return `<div class="meta-item"><i class="ti ti-${icon}" aria-hidden="true"></i><span class="empty-val">${placeholder}</span></div>`;
+}
+
+function render() {
+  const q = (document.getElementById('search').value||'').toLowerCase();
+  const fs = document.getElementById('filter-status').value;
+  const sort = document.getElementById('sort').value;
+
+  let list = props.filter(p => {
+    const text = (p.address+' '+p.suburb+' '+p.notes).toLowerCase();
+    const matchQ = !q || text.includes(q);
+    let matchS = true;
+    if (fs === 'active') matchS = p.status === 'active' && !p.inspected;
+    else if (fs === 'inspected') matchS = p.inspected || p.status === 'inspected';
+    else if (fs === 'passed') matchS = p.status === 'passed';
+    return matchQ && matchS;
+  });
+
+  if (sort === 'price-asc') list.sort((a,b)=>(parsePrice(a.price)||9e9)-(parsePrice(b.price)||9e9));
+  else if (sort === 'price-desc') list.sort((a,b)=>(parsePrice(b.price)||0)-(parsePrice(a.price)||0));
+  else if (sort === 'rating') list.sort((a,b)=>b.rating-a.rating);
+
+  // Stats
+  const prices = props.map(p=>parsePrice(p.price)).filter(Boolean);
+  const avg = prices.length ? Math.round(prices.reduce((a,b)=>a+b,0)/prices.length) : null;
+  const minP = prices.length ? Math.min(...prices) : null;
+  document.getElementById('stats').innerHTML = `
+    <div class="stat"><div class="label">Saved</div><div class="val">${props.length}</div><div class="sub">properties</div></div>
+    <div class="stat"><div class="label">Inspected</div><div class="val">${props.filter(p=>p.inspected||p.status==='inspected').length}</div><div class="sub">of ${props.length}</div></div>
+    <div class="stat"><div class="label">Avg price</div><div class="val">${avg?fmtPrice(avg):'—'}</div><div class="sub">${prices.length} priced</div></div>
+    <div class="stat"><div class="label">Shortlisted</div><div class="val">${props.filter(p=>p.rating>=4).length}</div><div class="sub">rated 4–5 ★</div></div>
+  `;
+
+  const el = document.getElementById('cards');
+  if (!list.length) {
+    el.innerHTML = '<div class="empty-state"><i class="ti ti-building-estate" aria-hidden="true"></i><p>No properties match your filters.</p></div>';
+    return;
+  }
+
+  el.innerHTML = list.map(p => {
+    const priceDisplay = parsePrice(p.price) ? fmtPrice(p.price) : null;
+    const stars = [1,2,3,4,5].map(i=>`<span class="star${p.rating>=i?' on':''}" onclick="rate(${p.id},${i})" title="${i} star${i>1?'s':''}" role="button" aria-label="${i} star${i>1?'s':''}">★</span>`).join('');
+    const statusClass = (p.inspected||p.status==='inspected') ? 'inspected' : p.status === 'passed' ? 'passed' : '';
+    return `
+    <div class="card ${statusClass}" id="card-${p.id}">
+      <div class="card-top">
+        <div class="card-addr-wrap">
+          <div class="card-street">
+            ${p.address && p.address !== '—' ? p.address : '<span style="color:var(--text3);font-weight:400">Address not set</span>'}
+            ${tagHtml(p)}
+          </div>
+          <div class="card-suburb">${p.suburb}</div>
+        </div>
+        <div class="card-right">
+          <div class="${priceDisplay?'price':'price empty'}">${priceDisplay||'Price TBC'}</div>
+        </div>
+      </div>
+      <div class="card-meta">
+        ${metaItem('ruler-2', p.land ? p.land+'m²' : '', 'Land?')}
+        <div class="divider"></div>
+        ${metaItem('bed', p.beds, 'Beds?')}
+        ${metaItem('bath', p.baths, 'Baths?')}
+        ${metaItem('car', p.cars, 'Cars?')}
+        <div class="divider"></div>
+        ${metaItem('calendar', p.inspection, 'No inspection set')}
+      </div>
+      <div class="card-bottom">
+        ${p.url ? `<a class="link-btn" href="${p.url}" target="_blank" rel="noopener"><i class="ti ti-external-link"></i> View listing</a>` : ''}
+        <div class="divider"></div>
+        <button class="btn btn-sm" onclick="openEdit(${p.id})"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button>
+        <button class="btn btn-sm${p.inspected||p.status==='inspected'?' ':''}" onclick="toggleInspect(${p.id})" style="${p.inspected||p.status==='inspected'?'color:var(--accent-text);border-color:var(--accent);background:var(--accent-bg)':''}">
+          <i class="ti ti-${p.inspected||p.status==='inspected'?'check':'walk'}" aria-hidden="true"></i>
+          ${p.inspected||p.status==='inspected'?'Inspected':'Mark inspected'}
+        </button>
+        <div class="spacer"></div>
+        <div class="rating" aria-label="Rating">${stars}</div>
+      </div>
+      ${p.notes ? `<div class="notes"><input type="text" value="${p.notes.replace(/"/g,'&quot;')}" placeholder="Notes…" onchange="updNotes(${p.id},this.value)"></div>` : `<div class="notes"><input type="text" value="" placeholder="Add notes…" onchange="updNotes(${p.id},this.value)"></div>`}
+    </div>`;
+  }).join('');
+}
+
+function toggleAddForm() {
+  const f = document.getElementById('add-form');
+  f.classList.toggle('visible');
+  if (f.classList.contains('visible')) document.getElementById('f-addr').focus();
+}
+
+function addProperty() {
+  const addr = document.getElementById('f-addr').value.trim();
+  const suburb = document.getElementById('f-suburb').value.trim();
+  if (!suburb && !addr) { toast('Please enter at least a suburb.'); return; }
+  const newId = props.length ? Math.max(...props.map(p=>p.id)) + 1 : 1;
+  props.push({
+    id: newId,
+    address: addr || '—',
+    suburb: suburb || '—',
+    url: document.getElementById('f-url').value.trim(),
+    price: document.getElementById('f-price').value.trim(),
+    land: document.getElementById('f-land').value.trim(),
+    beds: document.getElementById('f-beds').value.trim(),
+    baths: document.getElementById('f-baths').value.trim(),
+    cars: document.getElementById('f-cars').value.trim(),
+    inspection: document.getElementById('f-inspection').value.trim(),
+    inspected: false, status: 'active', rating: 0, notes: ''
+  });
+  save();
+  ['f-addr','f-suburb','f-price','f-land','f-beds','f-baths','f-cars','f-url','f-inspection'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('add-form').classList.remove('visible');
+  render();
+  toast('Property added.');
+}
+
+function openEdit(id) {
+  editId = id;
+  const p = props.find(x=>x.id===id);
+  if (!p) return;
+  document.getElementById('e-addr').value = p.address === '—' ? '' : p.address;
+  document.getElementById('e-suburb').value = p.suburb;
+  document.getElementById('e-price').value = p.price;
+  document.getElementById('e-land').value = p.land;
+  document.getElementById('e-beds').value = p.beds;
+  document.getElementById('e-baths').value = p.baths;
+  document.getElementById('e-cars').value = p.cars;
+  document.getElementById('e-url').value = p.url;
+  document.getElementById('e-inspection').value = p.inspection;
+  document.getElementById('e-status').value = p.inspected ? 'inspected' : p.status;
+  document.getElementById('e-notes').value = p.notes;
+  document.getElementById('edit-overlay').classList.add('open');
+  document.getElementById('e-addr').focus();
+}
+
+function saveEdit() {
+  const p = props.find(x=>x.id===editId);
+  if (!p) return;
+  const addr = document.getElementById('e-addr').value.trim();
+  p.address = addr || '—';
+  p.suburb = document.getElementById('e-suburb').value.trim() || p.suburb;
+  p.price = document.getElementById('e-price').value.trim();
+  p.land = document.getElementById('e-land').value.trim();
+  p.beds = document.getElementById('e-beds').value.trim();
+  p.baths = document.getElementById('e-baths').value.trim();
+  p.cars = document.getElementById('e-cars').value.trim();
+  p.url = document.getElementById('e-url').value.trim();
+  p.inspection = document.getElementById('e-inspection').value.trim();
+  const st = document.getElementById('e-status').value;
+  p.status = st;
+  p.inspected = st === 'inspected';
+  p.notes = document.getElementById('e-notes').value.trim();
+  save(); render();
+  document.getElementById('edit-overlay').classList.remove('open');
+  toast('Changes saved.');
+}
+
+function closeEdit(e) {
+  if (!e || e.target === document.getElementById('edit-overlay'))
+    document.getElementById('edit-overlay').classList.remove('open');
+}
+
+function deleteProperty() {
+  if (!confirm('Delete this property?')) return;
+  props = props.filter(p=>p.id!==editId);
+  save(); render();
+  document.getElementById('edit-overlay').classList.remove('open');
+  toast('Property deleted.');
+}
+
+function toggleInspect(id) {
+  const p = props.find(x=>x.id===id);
+  if (!p) return;
+  const was = p.inspected || p.status === 'inspected';
+  p.inspected = !was;
+  p.status = p.inspected ? 'inspected' : 'active';
+  save(); render();
+}
+
+function rate(id, val) {
+  const p = props.find(x=>x.id===id);
+  if (!p) return;
+  p.rating = p.rating === val ? 0 : val;
+  save(); render();
+}
+
+function updNotes(id, val) {
+  const p = props.find(x=>x.id===id);
+  if (!p) return;
+  p.notes = val;
+  save();
+}
+
+function exportCSV() {
+  const cols = ['Address','Suburb','Price','Land (m²)','Beds','Baths','Cars','Inspection','Inspected','Status','Rating','Notes','URL'];
+  const rows = props.map(p=>[
+    p.address, p.suburb, p.price, p.land, p.beds, p.baths, p.cars,
+    p.inspection, p.inspected?'Yes':'No', p.status, p.rating, p.notes, p.url
+  ].map(v=>`"${String(v||'').replace(/"/g,'""')}"`).join(','));
+  const csv = [cols.join(','), ...rows].join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,\uFEFF' + encodeURIComponent(csv);
+  a.download = 'properties.csv';
+  a.click();
+  toast('CSV exported.');
+}
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2500);
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeEdit();
+});
+
+load();
+render();
+</script>
+</body>
+</html>
