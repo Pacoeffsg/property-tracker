@@ -3,657 +3,510 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Property Tracker</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.x/dist/tabler-icons.min.css">
+<title>Property Tracker — Saved Listings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --bg: #f7f6f3;
-    --surface: #ffffff;
-    --surface2: #f1f0ec;
-    --border: rgba(0,0,0,0.1);
-    --border2: rgba(0,0,0,0.18);
-    --text: #1a1a18;
-    --text2: #6b6b67;
-    --text3: #9b9b96;
-    --accent: #1a5c3a;
-    --accent-bg: #e8f4ed;
-    --accent-text: #0f3d26;
-    --danger-bg: #fdf0ef;
-    --danger-text: #8c2a1e;
-    --info-bg: #edf3fb;
-    --info-text: #1a3d6e;
-    --amber: #c47c00;
-    --amber-bg: #fef6e4;
-    --radius: 10px;
-    --radius-sm: 6px;
+    --bg: #F6F6F3;
+    --surface: #FFFFFF;
+    --ink: #181816;
+    --ink-2: #6B6B66;
+    --line: #E4E4DE;
+    --accent: #1F47E6;      /* working blue */
+    --accent-soft: #EDF0FE;
+    --good: #0E7C4A;
+    --good-soft: #E7F4EE;
+    --warn: #B45309;
   }
-
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; font-size: 14px; line-height: 1.5; }
-
-  .header { background: var(--surface); border-bottom: 0.5px solid var(--border); padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 10; }
-  .header-left { display: flex; align-items: center; gap: 12px; }
-  .logo { font-size: 16px; font-weight: 600; color: var(--text); }
-  .logo span { color: var(--accent); }
-  .header-right { display: flex; gap: 8px; }
-
-  .container { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
-
-  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
-  .stat { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 14px 16px; }
-  .stat .label { font-size: 11px; color: var(--text3); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px; }
-  .stat .val { font-size: 24px; font-weight: 600; color: var(--text); }
-  .stat .sub { font-size: 11px; color: var(--text2); margin-top: 2px; }
-
-  .toolbar { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; align-items: center; }
-  .toolbar input[type="text"], .toolbar select { height: 36px; padding: 0 12px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); background: var(--surface); color: var(--text); font-size: 13px; outline: none; font-family: inherit; }
-  .toolbar input[type="text"] { flex: 1; min-width: 200px; }
-  .toolbar input[type="text"]:focus, .toolbar select:focus { border-color: var(--accent); }
-  .toolbar select { appearance: none; padding-right: 28px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%236b6b67' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; }
-
-  .btn { height: 36px; padding: 0 14px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); background: transparent; color: var(--text); font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; font-family: inherit; transition: background 0.1s; white-space: nowrap; }
-  .btn:hover { background: var(--surface2); }
-  .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
-  .btn-primary:hover { background: #144f30; }
-  .btn-sm { height: 28px; padding: 0 10px; font-size: 12px; }
-  .btn-danger { color: var(--danger-text); border-color: transparent; }
-  .btn-danger:hover { background: var(--danger-bg); border-color: transparent; }
-
-  /* Add form */
-  .add-form { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 16px; margin-bottom: 16px; display: none; }
-  .add-form.visible { display: block; }
-  .add-form h3 { font-size: 13px; font-weight: 600; margin-bottom: 12px; color: var(--text2); text-transform: uppercase; letter-spacing: 0.04em; }
-  .form-row { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 8px; margin-bottom: 8px; }
-  .form-row2 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 8px; margin-bottom: 8px; }
-  .form-row input { height: 34px; padding: 0 10px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); font-size: 13px; font-family: inherit; background: var(--bg); color: var(--text); outline: none; width: 100%; }
-  .form-row input:focus, .form-row2 input:focus { border-color: var(--accent); background: var(--surface); }
-  .form-row input::placeholder, .form-row2 input::placeholder { color: var(--text3); }
-  .form-row2 input { height: 34px; padding: 0 10px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); font-size: 13px; font-family: inherit; background: var(--bg); color: var(--text); outline: none; width: 100%; }
-  .form-actions { display: flex; gap: 8px; margin-top: 12px; }
-
-  /* Autocomplete */
-  .ac-wrap { position: relative; }
-  .ac-list { position: absolute; top: 100%; left: 0; right: 0; background: var(--surface); border: 0.5px solid var(--border2); border-radius: var(--radius-sm); z-index: 50; margin-top: 2px; max-height: 220px; overflow-y: auto; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
-  .ac-item { padding: 9px 12px; font-size: 13px; cursor: pointer; color: var(--text); border-bottom: 0.5px solid var(--border); display: flex; align-items: flex-start; gap: 8px; }
-  .ac-item:last-child { border-bottom: none; }
-  .ac-item:hover, .ac-item.active { background: var(--accent-bg); }
-  .ac-item i { color: var(--text3); font-size: 14px; margin-top: 1px; flex-shrink: 0; }
-  .ac-main { font-weight: 500; }
-  .ac-sub { font-size: 11px; color: var(--text2); }
-  .ac-loading { padding: 10px 12px; font-size: 12px; color: var(--text3); display: flex; align-items: center; gap: 6px; }
-
-  /* Cards */
-  .cards { display: flex; flex-direction: column; gap: 10px; }
-  .card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 16px; transition: border-color 0.15s; border-left: 3px solid transparent; }
-  .card:hover { border-color: var(--border2); }
-  .card.inspected { border-left-color: var(--accent); }
-  .card.passed { border-left-color: var(--text3); opacity: 0.7; }
-
-  .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
-  .card-addr-wrap { flex: 1; min-width: 0; }
-  .card-street { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 2px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .card-suburb { font-size: 12px; color: var(--text2); }
-  .card-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-  .price { font-size: 15px; font-weight: 600; color: var(--text); }
-  .price.empty { color: var(--text3); font-weight: 400; font-size: 13px; }
-
-  .card-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
-  .meta-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--text2); }
-  .meta-item i { font-size: 14px; color: var(--text3); }
-  .meta-item span.val { color: var(--text); font-weight: 500; }
-  .meta-item span.empty-val { color: var(--text3); }
-
-  .card-bottom { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .card-bottom .spacer { flex: 1; }
-
-  .tag { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 500; padding: 3px 8px; border-radius: 20px; letter-spacing: 0.02em; }
-  .tag-active { background: var(--info-bg); color: var(--info-text); }
-  .tag-inspected { background: var(--accent-bg); color: var(--accent-text); }
-  .tag-passed { background: var(--surface2); color: var(--text2); }
-  .tag-purchased { background: var(--amber-bg); color: var(--amber); }
-
-  .rating { display: flex; gap: 2px; }
-  .star { cursor: pointer; font-size: 18px; color: var(--text3); line-height: 1; transition: color 0.1s; user-select: none; }
-  .star.on { color: var(--amber); }
-  .star:hover { color: var(--amber); }
-
-  .notes { margin-top: 10px; border-top: 0.5px solid var(--border); padding-top: 10px; }
-  .notes input { width: 100%; height: 30px; padding: 0 10px; border: 0.5px solid var(--border); border-radius: var(--radius-sm); font-size: 12px; font-family: inherit; background: var(--bg); color: var(--text); outline: none; }
-  .notes input:focus { border-color: var(--accent); background: var(--surface); }
-  .notes input::placeholder { color: var(--text3); }
-
-  .link-btn { font-size: 12px; color: var(--info-text); text-decoration: none; display: inline-flex; align-items: center; gap: 3px; }
-  .link-btn:hover { text-decoration: underline; }
-  .link-btn i { font-size: 13px; }
-  .divider { width: 1px; height: 12px; background: var(--border2); }
-
-  /* Edit modal */
-  .edit-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 100; align-items: center; justify-content: center; }
-  .edit-overlay.open { display: flex; }
-  .edit-modal { background: var(--surface); border-radius: var(--radius); padding: 24px; width: 100%; max-width: 480px; max-height: 90vh; overflow-y: auto; margin: 16px; }
-  .edit-modal h2 { font-size: 16px; font-weight: 600; margin-bottom: 16px; }
-  .field-group { margin-bottom: 12px; }
-  .field-group label { display: block; font-size: 11px; color: var(--text2); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
-  .field-group input, .field-group select, .field-group textarea { width: 100%; height: 36px; padding: 0 10px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); font-size: 13px; font-family: inherit; background: var(--bg); color: var(--text); outline: none; }
-  .field-group textarea { height: 70px; padding: 8px 10px; resize: vertical; }
-  .field-group input:focus, .field-group select:focus, .field-group textarea:focus { border-color: var(--accent); background: var(--surface); }
-  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .modal-actions { display: flex; gap: 8px; margin-top: 20px; align-items: center; }
-
-  /* Delete confirm */
-  .confirm-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; align-items: center; justify-content: center; }
-  .confirm-overlay.open { display: flex; }
-  .confirm-box { background: var(--surface); border-radius: var(--radius); padding: 24px; width: 100%; max-width: 360px; margin: 16px; }
-  .confirm-box h3 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
-  .confirm-box p { font-size: 13px; color: var(--text2); margin-bottom: 20px; }
-  .confirm-actions { display: flex; gap: 8px; }
-  .btn-delete-confirm { background: #8c2a1e; color: #fff; border-color: #8c2a1e; }
-  .btn-delete-confirm:hover { background: #6e1f15; }
-
-  .empty-state { text-align: center; padding: 48px 16px; color: var(--text2); }
-  .empty-state i { font-size: 40px; color: var(--text3); display: block; margin-bottom: 12px; }
-
-  .toast { position: fixed; bottom: 24px; right: 24px; background: var(--text); color: #fff; padding: 10px 16px; border-radius: var(--radius-sm); font-size: 13px; z-index: 300; opacity: 0; transform: translateY(8px); transition: all 0.2s; pointer-events: none; }
-  .toast.show { opacity: 1; transform: translateY(0); }
-
-  @media (max-width: 600px) {
-    .header { padding: 14px 16px; }
-    .stats { grid-template-columns: repeat(2, 1fr); }
-    .form-row { grid-template-columns: 1fr; }
-    .form-row2 { grid-template-columns: repeat(3, 1fr); }
-    .card-top { flex-direction: column; gap: 8px; }
-    .card-right { width: 100%; justify-content: space-between; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 14px; line-height: 1.45;
   }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 28px 20px 80px; }
+
+  /* Header */
+  header { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
+  h1 { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+  .meta { color: var(--ink-2); font-size: 13px; }
+
+  /* Tabs */
+  nav { display: flex; gap: 4px; margin: 18px 0 16px; border-bottom: 1px solid var(--line); }
+  nav button {
+    font: inherit; font-weight: 500; background: none; border: none; cursor: pointer;
+    padding: 9px 14px; color: var(--ink-2); border-bottom: 2px solid transparent; margin-bottom: -1px;
+  }
+  nav button.active { color: var(--ink); border-bottom-color: var(--accent); }
+  nav button .count { color: var(--ink-2); font-weight: 400; margin-left: 4px; }
+
+  /* Controls */
+  .controls { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+  .controls input[type=search], .controls select {
+    font: inherit; padding: 7px 10px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface);
+  }
+  .controls input[type=search] { width: 240px; }
+  .spacer { flex: 1; }
+  .btn {
+    font: inherit; font-weight: 500; cursor: pointer; border-radius: 7px;
+    padding: 7px 13px; border: 1px solid var(--line); background: var(--surface);
+  }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn:hover { border-color: var(--ink-2); }
+  .btn.primary:hover { border-color: var(--accent); opacity: .92; }
+
+  /* Table */
+  .tablewrap { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; min-width: 860px; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  th {
+    font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2);
+    font-weight: 600; background: #FBFBF9; position: sticky; top: 0; cursor: pointer; user-select: none; white-space: nowrap;
+  }
+  th .arrow { font-size: 9px; }
+  tr.zonehead td {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 13px;
+    background: #F0F0EB; color: var(--ink); padding: 8px 12px; letter-spacing: .01em;
+  }
+  tr.zonehead .zcount { color: var(--ink-2); font-weight: 400; font-size: 12px; margin-left: 6px; }
+  td.addr a { color: var(--ink); font-weight: 500; text-decoration: none; }
+  td.addr a:hover { color: var(--accent); }
+  td.addr .suburb { color: var(--ink-2); font-size: 12.5px; }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .bbc { white-space: nowrap; color: var(--ink-2); }
+  .bbc b { color: var(--ink); font-weight: 600; }
+  .insp { font-size: 12.5px; color: var(--good); background: var(--good-soft); border-radius: 5px; padding: 2px 7px; display: inline-block; white-space: nowrap; }
+  select.status { font: inherit; font-size: 12.5px; border: 1px solid var(--line); border-radius: 6px; padding: 3px 5px; background: var(--surface); }
+  select.status.s-shortlist { border-color: var(--accent); color: var(--accent); }
+  select.status.s-inspect { border-color: var(--good); color: var(--good); }
+  select.status.s-offer { border-color: var(--warn); color: var(--warn); }
+  select.status.s-pass { opacity: .45; }
+  tr.r-pass td { opacity: .45; }
+  .maps { font-size: 12px; color: var(--ink-2); text-decoration: none; }
+  .maps:hover { color: var(--accent); }
+
+  /* Schedule */
+  .day { margin-bottom: 26px; }
+  .dayhead { display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px; }
+  .dayhead .d { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; }
+  .dayhead .n { color: var(--ink-2); font-size: 13px; }
+  .stop {
+    display: flex; gap: 14px; align-items: flex-start; background: var(--surface);
+    border: 1px solid var(--line); border-radius: 10px; padding: 13px 16px; margin-bottom: 8px;
+  }
+  .stop .time {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 15px;
+    min-width: 76px; color: var(--accent); font-variant-numeric: tabular-nums;
+  }
+  .stop .body { flex: 1; }
+  .stop .body a { color: var(--ink); font-weight: 600; text-decoration: none; }
+  .stop .body a:hover { color: var(--accent); }
+  .stop .sub { color: var(--ink-2); font-size: 12.5px; margin-top: 2px; }
+  .empty {
+    border: 1px dashed var(--line); border-radius: 10px; padding: 36px; text-align: center; color: var(--ink-2);
+  }
+  .empty b { color: var(--ink); }
+
+  /* Import */
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px; max-width: 680px; }
+  .panel h2 { font-family: 'Space Grotesk', sans-serif; font-size: 16px; margin-bottom: 6px; }
+  .panel p { color: var(--ink-2); margin-bottom: 14px; }
+  .panel textarea {
+    width: 100%; height: 140px; font-family: ui-monospace, monospace; font-size: 12px;
+    border: 1px solid var(--line); border-radius: 8px; padding: 10px; margin-bottom: 10px; resize: vertical;
+  }
+  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .note { font-size: 12.5px; color: var(--ink-2); margin-top: 12px; }
+  #importMsg { font-size: 13px; font-weight: 500; color: var(--good); margin-top: 10px; }
 </style>
 </head>
 <body>
+<div class="wrap">
+  <header>
+    <h1>Property Tracker</h1>
+    <span class="meta" id="meta"></span>
+  </header>
 
-<div class="header">
-  <div class="header-left">
-    <i class="ti ti-home-2" style="font-size:20px;color:var(--accent)" aria-hidden="true"></i>
-    <div class="logo">Property <span>Tracker</span></div>
-  </div>
-  <div class="header-right">
-    <button class="btn" onclick="exportCSV()"><i class="ti ti-download" aria-hidden="true"></i> Export CSV</button>
-    <button class="btn btn-primary" onclick="toggleAddForm()"><i class="ti ti-plus" aria-hidden="true"></i> Add property</button>
-  </div>
-</div>
+  <nav>
+    <button data-tab="listings" class="active">Listings <span class="count" id="cListings"></span></button>
+    <button data-tab="schedule">Schedule <span class="count" id="cSchedule"></span></button>
+    <button data-tab="import">Import</button>
+  </nav>
 
-<div class="container">
-  <div class="stats" id="stats"></div>
+  <!-- LISTINGS -->
+  <section id="tab-listings">
+    <div class="controls">
+      <input type="search" id="q" placeholder="Search address / suburb…">
+      <select id="fStatus">
+        <option value="">All statuses</option>
+        <option>New</option><option>Shortlist</option><option>Inspect</option><option>Offer</option><option>Pass</option>
+      </select>
+      <select id="fSuburb"><option value="">All suburbs</option></select>
+      <span class="spacer"></span>
+      <button class="btn" id="exportJson">Export JSON</button>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-sort="address">Address <span class="arrow"></span></th>
+            <th data-sort="priceNum">Price <span class="arrow"></span></th>
+            <th data-sort="beds">B / B / C <span class="arrow"></span></th>
+            <th data-sort="landM2">Land <span class="arrow"></span></th>
+            <th data-sort="inspTs">Inspection <span class="arrow"></span></th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </section>
 
-  <div class="toolbar">
-    <input type="text" id="search" placeholder="Search address or suburb…" oninput="render()">
-    <select id="filter-status" onchange="render()">
-      <option value="">All statuses</option>
-      <option value="active">Active</option>
-      <option value="inspected">Inspected</option>
-      <option value="passed">Passed</option>
-    </select>
-    <select id="sort" onchange="render()">
-      <option value="default">Order added</option>
-      <option value="price-asc">Price: low → high</option>
-      <option value="price-desc">Price: high → low</option>
-      <option value="rating">Rating</option>
-    </select>
-  </div>
+  <!-- SCHEDULE -->
+  <section id="tab-schedule" hidden>
+    <div class="controls">
+      <span class="meta" id="schedMeta"></span>
+      <span class="spacer"></span>
+      <button class="btn primary" id="exportIcs">Export .ics → Calendar</button>
+    </div>
+    <div id="schedule"></div>
+  </section>
 
-  <div class="add-form" id="add-form">
-    <h3>New property</h3>
-    <div class="form-row">
-      <div class="ac-wrap">
-        <input type="text" id="f-addr" placeholder="Start typing address in NSW…" autocomplete="off" oninput="acInput(this.value)" onkeydown="acKey(event)">
-        <div class="ac-list" id="ac-list" style="display:none"></div>
+  <!-- IMPORT -->
+  <section id="tab-import" hidden>
+    <div class="panel">
+      <h2>Import a fresh scrape</h2>
+      <p>Run the scraper on your REA collection, then drop the JSON file here or paste it. Existing statuses are preserved — records merge by listing ID.</p>
+      <div class="row" style="margin-bottom:10px">
+        <input type="file" id="file" accept=".json">
       </div>
-      <input type="text" id="f-suburb" placeholder="Suburb (auto-filled)">
-      <input type="text" id="f-price" placeholder="Price (e.g. $1.25m)">
-    </div>
-    <div class="form-row2">
-      <input type="text" id="f-land" placeholder="Land m²">
-      <input type="text" id="f-beds" placeholder="Beds">
-      <input type="text" id="f-baths" placeholder="Baths">
-      <input type="text" id="f-cars" placeholder="Cars">
-      <input type="text" id="f-url" placeholder="Listing URL">
-    </div>
-    <div class="form-row" style="grid-template-columns:1fr;">
-      <input type="text" id="f-inspection" placeholder="Inspection date & time (e.g. Sat 14 Jun, 11:00am)">
-    </div>
-    <div class="form-actions">
-      <button class="btn btn-primary" onclick="addProperty()"><i class="ti ti-check" aria-hidden="true"></i> Add</button>
-      <button class="btn" onclick="toggleAddForm()">Cancel</button>
-    </div>
-  </div>
-
-  <div class="cards" id="cards"></div>
-</div>
-
-<!-- Edit modal -->
-<div class="edit-overlay" id="edit-overlay" onclick="closeEdit(event)">
-  <div class="edit-modal" onclick="event.stopPropagation()">
-    <h2>Edit property</h2>
-    <div class="field-group">
-      <label>Street address</label>
-      <div class="ac-wrap">
-        <input type="text" id="e-addr" autocomplete="off" oninput="acInputEdit(this.value)" onkeydown="acKeyEdit(event)">
-        <div class="ac-list" id="ac-list-edit" style="display:none"></div>
+      <textarea id="paste" placeholder='…or paste JSON here'></textarea>
+      <div class="row">
+        <button class="btn primary" id="doImport">Merge into tracker</button>
+        <button class="btn" id="resetData">Reset to embedded seed</button>
       </div>
+      <div id="importMsg"></div>
+      <p class="note">Data lives in this browser's localStorage. "Export JSON" on the Listings tab is your backup.</p>
     </div>
-    <div class="field-row">
-      <div class="field-group"><label>Suburb</label><input type="text" id="e-suburb"></div>
-      <div class="field-group"><label>Price</label><input type="text" id="e-price"></div>
-    </div>
-    <div class="field-row">
-      <div class="field-group"><label>Land size (m²)</label><input type="text" id="e-land"></div>
-      <div class="field-group"><label>Listing URL</label><input type="text" id="e-url"></div>
-    </div>
-    <div class="field-row">
-      <div class="field-group"><label>Beds</label><input type="text" id="e-beds"></div>
-      <div class="field-group"><label>Baths</label><input type="text" id="e-baths"></div>
-    </div>
-    <div class="field-row">
-      <div class="field-group"><label>Car spaces</label><input type="text" id="e-cars"></div>
-      <div class="field-group"><label>Status</label>
-        <select id="e-status">
-          <option value="active">Active</option>
-          <option value="inspected">Inspected</option>
-          <option value="passed">Passed</option>
-          <option value="purchased">Purchased</option>
-        </select>
-      </div>
-    </div>
-    <div class="field-group"><label>Inspection date & time</label><input type="text" id="e-inspection"></div>
-    <div class="field-group"><label>Notes</label><textarea id="e-notes" placeholder="Observations, pros/cons, agent contact…"></textarea></div>
-    <div class="modal-actions">
-      <button class="btn btn-primary" onclick="saveEdit()"><i class="ti ti-check" aria-hidden="true"></i> Save changes</button>
-      <button class="btn" onclick="closeEdit()">Cancel</button>
-      <button class="btn btn-danger" style="margin-left:auto;" onclick="confirmDelete(editId)"><i class="ti ti-trash" aria-hidden="true"></i> Delete</button>
-    </div>
-  </div>
+  </section>
 </div>
-
-<!-- Delete confirm -->
-<div class="confirm-overlay" id="confirm-overlay">
-  <div class="confirm-box">
-    <h3>Remove property?</h3>
-    <p id="confirm-msg">This will permanently remove this property from your tracker.</p>
-    <div class="confirm-actions">
-      <button class="btn btn-delete-confirm" onclick="doDelete()"><i class="ti ti-trash" aria-hidden="true"></i> Yes, remove</button>
-      <button class="btn" onclick="closeConfirm()">Cancel</button>
-    </div>
-  </div>
-</div>
-
-<div class="toast" id="toast"></div>
 
 <script>
-const STORE_KEY = 'prop_tracker_v3';
+/* ============ Seed data (scraped 2026-06-11) ============ */
+const SEED = [{"id":"151134308","url":"https://www.realestate.com.au/property-house-nsw-hornsby-151134308","address":"26 Milner Avenue, Hornsby","price":"For sale $1,375,000 - $1,425,000","beds":3,"baths":2,"cars":1,"landM2":null,"type":"House","inspections":[{"start":"2026-06-13T12:45:00+10:00","end":"2026-06-13T13:15:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151391356","url":"https://www.realestate.com.au/property-house-nsw-engadine-151391356","address":"865 Princes Highway, Engadine","price":"For Sale - Contact Agent","beds":4,"baths":2,"cars":3,"landM2":834.7,"type":"House","inspections":[{"start":"2026-06-13T11:00:00+10:00","end":"2026-06-13T11:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150620528","url":"https://www.realestate.com.au/property-house-nsw-south+wentworthville-150620528","address":"4 The Point, South Wentworthville","price":"Price Guide $1,199,000 - $1,250,000","beds":5,"baths":3,"cars":2,"landM2":569.1,"type":"House","inspections":[{"start":"2026-06-13T10:20:00+10:00","end":"2026-06-13T10:50:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151205424","url":"https://www.realestate.com.au/property-house-nsw-parklea-151205424","address":"60 Damien Drive, Parklea","price":"FOR SALE Guide $1,300,000 - $1,340,000","beds":3,"baths":3,"cars":2,"landM2":null,"type":"House","inspections":[{"start":"2026-06-13T11:15:00+10:00","end":"2026-06-13T11:45:00+10:00","label":null},{"start":"2026-06-13T15:00:00+10:00","end":"2026-06-13T15:30:00+10:00","label":null},{"start":"2026-06-14T11:45:00+10:00","end":"2026-06-14T12:15:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150694580","url":"https://www.realestate.com.au/property-house-nsw-bella+vista-150694580","address":"12 Patrine Place, Bella Vista","price":"Price guide $1,390,000","beds":3,"baths":2,"cars":1,"landM2":null,"type":"House","inspections":[{"start":"2026-06-13T11:00:00+10:00","end":"2026-06-13T11:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151295960","url":"https://www.realestate.com.au/property-house-nsw-greystanes-151295960","address":"98 Gardenia Parade, Greystanes","price":"PRICE GUIDE $1,350,000","beds":3,"baths":2,"cars":1,"landM2":562.8,"type":"House","inspections":[{"start":"2026-06-13T13:15:00+10:00","end":"2026-06-13T13:45:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151284324","url":"https://www.realestate.com.au/property-house-nsw-stanhope+gardens-151284324","address":"22 Winslow Avenue, Stanhope Gardens","price":"For Sale $1,330,000 - $1,380,000","beds":3,"baths":2,"cars":2,"landM2":390,"type":"House","inspections":[{"start":"2026-06-13T13:00:00+10:00","end":"2026-06-13T13:20:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151333224","url":"https://www.realestate.com.au/property-duplex+semi-detached-nsw-roselands-151333224","address":"34 Remly Street, Roselands","price":"Under Contract","beds":3,"baths":2,"cars":2,"landM2":389.9,"type":"Duplex/semi-detached","inspections":[],"auction":null,"savedAt":"2026-06-12","note":"Under contract"},{"id":"151375148","url":"https://www.realestate.com.au/property-house-nsw-narwee-151375148","address":"74 Grove Avenue, Narwee","price":"Auction Unless Sold Prior","beds":3,"baths":2,"cars":2,"landM2":442.6,"type":"House","inspections":[{"start":"2026-06-13T12:00:00+10:00","end":"2026-06-13T12:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150809580","url":"https://www.realestate.com.au/property-house-nsw-grays+point-150809580","address":"195 North West Arm Road, Grays Point","price":"","beds":3,"baths":2,"cars":2,"landM2":594.4,"type":"House","inspections":[{"start":"2026-06-13T12:00:00+10:00","end":"2026-06-13T12:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151446436","url":"https://www.realestate.com.au/property-house-nsw-engadine-151446436","address":"2/35 Morrison Avenue, Engadine","price":"Guide $1,400,000 - $1,500,000","beds":3,"baths":2,"cars":2,"landM2":305,"type":"House","inspections":[{"start":"2026-06-13T11:00:00+10:00","end":"2026-06-13T11:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151446612","url":"https://www.realestate.com.au/property-house-nsw-gymea-151446612","address":"350 President Avenue, Gymea","price":"For Sale","beds":4,"baths":1,"cars":5,"landM2":null,"type":"House","inspections":[{"start":"2026-06-13T09:00:00+10:00","end":"2026-06-13T09:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151449236","url":"https://www.realestate.com.au/property-house-nsw-engadine-151449236","address":"28B Engadine Avenue, Engadine","price":"For Sale - Contact Agent","beds":2,"baths":1,"cars":2,"landM2":356.7,"type":"House","inspections":[{"start":"2026-06-13T09:30:00+10:00","end":"2026-06-13T10:00:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151367560","url":"https://www.realestate.com.au/property-house-nsw-bangor-151367560","address":"26 Bandalong Crescent, Bangor","price":"Auction Unless Sold Prior","beds":3,"baths":1,"cars":1,"landM2":646,"type":"House","inspections":[{"start":"2026-06-13T09:30:00+10:00","end":"2026-06-13T10:00:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151088244","url":"https://www.realestate.com.au/property-house-nsw-menai-151088244","address":"1A Davis Place, Menai","price":"AUCTION UNLESS SOLD PRIOR","beds":3,"baths":1,"cars":2,"landM2":481,"type":"House","inspections":[{"start":"2026-06-13T10:30:00+10:00","end":"2026-06-13T11:00:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151239644","url":"https://www.realestate.com.au/property-house-nsw-kellyville+ridge-151239644","address":"48 Tullaroan Street, Kellyville Ridge","price":"Price Guide | $1,450,000 - $1,500,000","beds":4,"baths":2,"cars":2,"landM2":450,"type":"House","inspections":[{"start":"2026-06-13T14:15:00+10:00","end":"2026-06-13T14:45:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150539688","url":"https://www.realestate.com.au/property-house-nsw-glenwood-150539688","address":"15 Grech Place, Glenwood","price":"$1,450,000","beds":4,"baths":2,"cars":2,"landM2":null,"type":"House","inspections":[{"start":"2026-06-13T10:00:00+10:00","end":"2026-06-13T10:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151094996","url":"https://www.realestate.com.au/property-house-nsw-merrylands-151094996","address":"71 Desmond Street, Merrylands","price":"Price Guide $1,400,000 - $1,500,000","beds":3,"baths":1,"cars":1,"landM2":606.9,"type":"House","inspections":[{"start":"2026-06-13T11:00:00+10:00","end":"2026-06-13T11:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151366840","url":"https://www.realestate.com.au/property-house-nsw-engadine-151366840","address":"3 Bombell Avenue, Engadine","price":"Guide $1,500,000","beds":4,"baths":1,"cars":2,"landM2":619,"type":"House","inspections":[{"start":"2026-06-13T11:00:00+10:00","end":"2026-06-13T11:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151044960","url":"https://www.realestate.com.au/property-house-nsw-kareela-151044960","address":"1 Bulimba Avenue, Kareela","price":"$1,450,000 - $1,550,000","beds":3,"baths":2,"cars":2,"landM2":556,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"151118220","url":"https://www.realestate.com.au/property-house-nsw-kirrawee-151118220","address":"128 Acacia Road, Kirrawee","price":"Price $1,400,000 | INSPECT BY APPOINTMENT","beds":4,"baths":2,"cars":4,"landM2":627,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"151297004","url":"https://www.realestate.com.au/property-house-nsw-padstow+heights-151297004","address":"72 Valley Road, Padstow Heights","price":"Guide $1,400,000","beds":4,"baths":3,"cars":2,"landM2":556,"type":"House","inspections":[{"start":"2026-06-13T12:15:00+10:00","end":"2026-06-13T12:45:00+10:00","label":null},{"start":"2026-06-16T17:00:00+10:00","end":"2026-06-16T17:25:00+10:00","label":null}],"auction":{"value":"2026-06-20T15:45:00+10:00","__typename":"AuctionTime","display":{"longLabel":"Sat 20 Jun at 3:45 pm","__typename":"AuctionTimeDisplay"}},"savedAt":"2026-06-12"},{"id":"151383988","url":"https://www.realestate.com.au/property-house-nsw-engadine-151383988","address":"1 Palona Crescent, Engadine","price":"Price Guide ~ $1,400,000","beds":3,"baths":1,"cars":3,"landM2":572,"type":"House","inspections":[{"start":"2026-06-13T10:00:00+10:00","end":"2026-06-13T10:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151361452","url":"https://www.realestate.com.au/property-house-nsw-east+hills-151361452","address":"5 Matthews Avenue, East Hills","price":"For Sale $1,385,000 - $1,440,000","beds":3,"baths":1,"cars":2,"landM2":406,"type":"House","inspections":[{"start":"2026-06-13T09:30:00+10:00","end":"2026-06-13T10:00:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151319928","url":"https://www.realestate.com.au/property-house-nsw-greystanes-151319928","address":"19 Greystanes Road, Greystanes","price":"Guide $1,400,000- $1,490,000","beds":3,"baths":1,"cars":1,"landM2":556,"type":"House","inspections":[{"start":"2026-06-13T10:00:00+10:00","end":"2026-06-13T10:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151214976","url":"https://www.realestate.com.au/property-duplex+semi-detached-nsw-belmore-151214976","address":"44 Knox Street, Belmore","price":"For Sale $1,400,000 - $1,500,000","beds":4,"baths":2,"cars":2,"landM2":325,"type":"Duplex/semi-detached","inspections":[{"start":"2026-06-13T10:00:00+10:00","end":"2026-06-13T10:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150786604","url":"https://www.realestate.com.au/property-house-nsw-acacia+gardens-150786604","address":"13 Corinne Street, Acacia Gardens","price":"PRICE GUIDE | $1,280,000 - $1,330,000","beds":3,"baths":1,"cars":2,"landM2":657.6,"type":"House","inspections":[{"start":"2026-06-13T10:30:00+10:00","end":"2026-06-13T10:50:00+10:00","label":null},{"start":"2026-06-14T10:40:00+10:00","end":"2026-06-14T11:00:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150524428","url":"https://www.realestate.com.au/property-house-nsw-seven+hills-150524428","address":"60 Jean Street, Seven Hills","price":"Price Guide $1,180,000 - $1,240,000","beds":3,"baths":1,"cars":2,"landM2":562.8,"type":"House","inspections":[{"start":"2026-06-13T14:45:00+10:00","end":"2026-06-13T15:15:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151176376","url":"https://www.realestate.com.au/property-house-nsw-greystanes-151176376","address":"6 Bambil Street, Greystanes","price":"$1,300,000 - $1,350,000","beds":3,"baths":1,"cars":1,"landM2":556.4,"type":"House","inspections":[{"start":"2026-06-13T11:00:00+10:00","end":"2026-06-13T11:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151217276","url":"https://www.realestate.com.au/property-house-nsw-blacktown-151217276","address":"217 Vardys Road, Blacktown","price":"Price Guide: $1,150,000 - $1,180,000","beds":3,"baths":1,"cars":3,"landM2":822.2,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"151117008","url":"https://www.realestate.com.au/sold/property-house-nsw-menai-151117008","address":"72 Rosewall Drive, Menai","price":"$1,400,000","beds":4,"baths":1,"cars":1,"landM2":866.7,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150558632","url":"https://www.realestate.com.au/property-house-nsw-glenwood-150558632","address":"39 Crestview Drive, Glenwood","price":"FOR SALE","beds":3,"baths":2,"cars":2,"landM2":null,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150913780","url":"https://www.realestate.com.au/property-house-nsw-acacia+gardens-150913780","address":"4 Gannet Place, Acacia Gardens","price":"FOR SALE","beds":4,"baths":3,"cars":2,"landM2":600,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"151043208","url":"https://www.realestate.com.au/property-house-nsw-padstow-151043208","address":"33 Ronald Street, Padstow","price":"Under Contract","beds":3,"baths":1,"cars":1,"landM2":392.8,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12","note":"Under contract"},{"id":"151031376","url":"https://www.realestate.com.au/sold/property-house-nsw-engadine-151031376","address":"30 Lantana Road, Engadine","price":"Contact agent","beds":3,"baths":1,"cars":2,"landM2":573,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"151334836","url":"https://www.realestate.com.au/property-house-nsw-toongabbie-151334836","address":"63 Valparaiso Avenue, Toongabbie","price":"","beds":3,"baths":3,"cars":2,"landM2":566,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12","note":"Under contract"},{"id":"151020344","url":"https://www.realestate.com.au/property-house-nsw-greystanes-151020344","address":"30 Dawn Street, Greystanes","price":"Price Guide $1,400,000 - $1,470,000","beds":3,"baths":2,"cars":2,"landM2":629.6,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"151049896","url":"https://www.realestate.com.au/property-house-nsw-greystanes-151049896","address":"35 Macleay Street, Greystanes","price":"Under Contract","beds":4,"baths":2,"cars":1,"landM2":569.1,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12","note":"Under contract"},{"id":"150882704","url":"https://www.realestate.com.au/property-house-nsw-westmead-150882704","address":"12 Booth Street, Westmead","price":"$1,400,000 - $1,540,000","beds":3,"baths":1,"cars":2,"landM2":428,"type":"House","inspections":[{"start":"2026-06-13T14:00:00+10:00","end":"2026-06-13T14:30:00+10:00","label":null},{"start":"2026-06-14T12:30:00+10:00","end":"2026-06-14T12:50:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151099792","url":"https://www.realestate.com.au/property-house-nsw-stanhope+gardens-151099792","address":"49 Kentwell Crescent, Stanhope Gardens","price":"Guide | $1,300,000 - $1,350,000","beds":3,"baths":1,"cars":1,"landM2":650,"type":"House","inspections":[{"start":"2026-06-13T13:30:00+10:00","end":"2026-06-13T13:50:00+10:00","label":null},{"start":"2026-06-14T10:00:00+10:00","end":"2026-06-14T10:20:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150978204","url":"https://www.realestate.com.au/property-house-nsw-kellyville+ridge-150978204","address":"19 Singleton Avenue, Kellyville Ridge","price":"$1,400,000 - $1,450,000","beds":3,"baths":2,"cars":2,"landM2":460,"type":"House","inspections":[{"start":"2026-06-13T11:00:00+10:00","end":"2026-06-13T11:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151148744","url":"https://www.realestate.com.au/property-house-nsw-south+wentworthville-151148744","address":"8 Lucerne Avenue, South Wentworthville","price":"","beds":3,"baths":1,"cars":1,"landM2":556.4,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150977640","url":"https://www.realestate.com.au/property-house-nsw-seven+hills-150977640","address":"331 Seven Hills Road, Seven Hills","price":"Price Guide | $1,300,000 - $1,400,000","beds":4,"baths":3,"cars":2,"landM2":557,"type":"House","inspections":[{"start":"2026-06-13T11:00:00+10:00","end":"2026-06-13T11:30:00+10:00","label":null},{"start":"2026-06-20T11:00:00+10:00","end":"2026-06-20T11:30:00+10:00","label":null},{"start":"2026-06-27T11:00:00+10:00","end":"2026-06-27T11:30:00+10:00","label":null},{"start":"2026-07-04T11:00:00+10:00","end":"2026-07-04T11:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151103456","url":"https://www.realestate.com.au/property-house-nsw-merrylands-151103456","address":"21 Yoogali Street, Merrylands","price":"Under Contract By Jaiden Spencer","beds":3,"baths":2,"cars":2,"landM2":556.4,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12","note":"Under contract"},{"id":"150884496","url":"https://www.realestate.com.au/property-house-nsw-seven+hills-150884496","address":"15 Zambesi Road, Seven Hills","price":"Price Guide $1,280,000 - $1,350,000","beds":3,"baths":2,"cars":4,"landM2":null,"type":"House","inspections":[{"start":"2026-06-13T12:00:00+10:00","end":"2026-06-13T12:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150772836","url":"https://www.realestate.com.au/sold/property-house-nsw-parklea-150772836","address":"17 Parklea Drive, Parklea","price":"$1,365,000","beds":4,"baths":2,"cars":3,"landM2":396,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150802248","url":"https://www.realestate.com.au/property-house-nsw-roselands-150802248","address":"227 Moorefields Road, Roselands","price":"AUCTION | GUIDE: $1,250,000","beds":4,"baths":2,"cars":2,"landM2":450,"type":"House","inspections":[{"start":"2026-06-13T11:30:00+10:00","end":"2026-06-13T12:00:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150822880","url":"https://www.realestate.com.au/property-house-nsw-winston+hills-150822880","address":"15 Lachlan Drive, Winston Hills","price":"Contact Agent | David Johnson","beds":4,"baths":2,"cars":2,"landM2":348.8,"type":"House","inspections":[{"start":"2026-06-13T10:00:00+10:00","end":"2026-06-13T10:30:00+10:00","label":null},{"start":"2026-06-13T13:30:00+10:00","end":"2026-06-13T14:00:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151018856","url":"https://www.realestate.com.au/property-house-nsw-revesby-151018856","address":"48 Tompson Road, Revesby","price":"For Sale $1,390,000","beds":4,"baths":1,"cars":2,"landM2":581,"type":"House","inspections":[{"start":"2026-06-13T11:00:00+10:00","end":"2026-06-13T11:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151172112","url":"https://www.realestate.com.au/property-house-nsw-picnic+point-151172112","address":"24 Thomas Street, Picnic Point","price":"$1,480,000 - $1,550,000","beds":3,"baths":1,"cars":3,"landM2":632,"type":"House","inspections":[{"start":"2026-06-13T13:45:00+10:00","end":"2026-06-13T14:15:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151022924","url":"https://www.realestate.com.au/sold/property-house-nsw-gymea-151022924","address":"816 Kingsway, Gymea","price":"$1,430,000","beds":3,"baths":1,"cars":1,"landM2":562,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150863068","url":"https://www.realestate.com.au/property-house-nsw-greystanes-150863068","address":"16 Daffodil Street, Greystanes","price":"PRICE GUIDE $1,450,000","beds":3,"baths":1,"cars":2,"landM2":557,"type":"House","inspections":[{"start":"2026-06-13T10:45:00+10:00","end":"2026-06-13T11:15:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150674968","url":"https://www.realestate.com.au/property-house-nsw-bexley+north-150674968","address":"336 Bexley Road, Bexley North","price":"Price Guide: $1,390,000 to $1,490,000","beds":3,"baths":1,"cars":2,"landM2":null,"type":"House","inspections":[{"start":"2026-06-13T13:45:00+10:00","end":"2026-06-13T14:15:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151184324","url":"https://www.realestate.com.au/property-house-nsw-bonnet+bay-151184324","address":"31 Lower Washington Drive, Bonnet Bay","price":"For Sale","beds":3,"baths":1,"cars":1,"landM2":651,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"151021352","url":"https://www.realestate.com.au/property-house-nsw-constitution+hill-151021352","address":"31 Austin Crescent, Constitution Hill","price":"$1,300,000 - $1,350,000","beds":3,"baths":2,"cars":1,"landM2":556,"type":"House","inspections":[{"start":"2026-06-13T10:00:00+10:00","end":"2026-06-13T10:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150896804","url":"https://www.realestate.com.au/property-house-nsw-blacktown-150896804","address":"49 Keyworth Drive, Blacktown","price":"FOR SALE| $1,200,000","beds":3,"baths":1,"cars":2,"landM2":556.4,"type":"House","inspections":[{"start":"2026-06-13T11:20:00+10:00","end":"2026-06-13T11:40:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150970832","url":"https://www.realestate.com.au/property-house-nsw-riverstone-150970832","address":"9 Piccadilly Street, Riverstone","price":"Guide $1,350,000-$1,450,000","beds":4,"baths":2,"cars":2,"landM2":438,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150997900","url":"https://www.realestate.com.au/property-house-nsw-schofields-150997900","address":"12 Simon Street (Tallawong), Schofields","price":"FOR SALE $1,400,000 - $1,470,000","beds":5,"baths":2,"cars":2,"landM2":373,"type":"House","inspections":[{"start":"2026-06-13T12:30:00+10:00","end":"2026-06-13T13:00:00+10:00","label":null},{"start":"2026-06-14T12:00:00+10:00","end":"2026-06-14T12:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151054928","url":"https://www.realestate.com.au/sold/property-villa-nsw-sutherland-151054928","address":"1/72 Belmont Street, Sutherland","price":"$1,420,000","beds":3,"baths":1,"cars":1,"landM2":null,"type":"Villa","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"151058772","url":"https://www.realestate.com.au/property-house-nsw-mount+colah-151058772","address":"16 Greenmount Way, Mount Colah","price":"$1,350,000","beds":3,"baths":1,"cars":3,"landM2":null,"type":"House","inspections":[{"start":"2026-06-13T13:30:00+10:00","end":"2026-06-13T14:00:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151074868","url":"https://www.realestate.com.au/sold/property-house-nsw-riverstone-151074868","address":"55 Castlereagh Street, Riverstone","price":"$1,460,000","beds":3,"baths":1,"cars":1,"landM2":1012,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"151180760","url":"https://www.realestate.com.au/sold/property-house-nsw-riverstone-151180760","address":"6 Coe Place, Riverstone","price":"$1,080,000","beds":3,"baths":1,"cars":2,"landM2":null,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"151111984","url":"https://www.realestate.com.au/property-house-nsw-kings+park-151111984","address":"262 Madagascar Drive, Kings Park","price":"","beds":3,"baths":1,"cars":2,"landM2":711,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12","note":"Under contract"},{"id":"151163980","url":"https://www.realestate.com.au/property-house-nsw-erskine+park-151163980","address":"82 Chameleon Drive, Erskine Park","price":"Price guide $1,300,000 - Great Family Home","beds":4,"baths":2,"cars":4,"landM2":610,"type":"House","inspections":[{"start":"2026-06-13T10:30:00+10:00","end":"2026-06-13T11:00:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150254356","url":"https://www.realestate.com.au/sold/property-house-nsw-earlwood-150254356","address":"94 Wolli Avenue, Earlwood","price":"Contact agent","beds":3,"baths":1,"cars":3,"landM2":520,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150842576","url":"https://www.realestate.com.au/property-house-nsw-engadine-150842576","address":"49 Dobell Road, Engadine","price":"Guide $1,300,000","beds":3,"baths":1,"cars":2,"landM2":640,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150814728","url":"https://www.realestate.com.au/property-house-nsw-quakers+hill-150814728","address":"112 Kennington Avenue, Quakers Hill","price":"$1,350,000 - $1,390,000","beds":4,"baths":1,"cars":2,"landM2":599,"type":"House","inspections":[{"start":"2026-06-14T10:00:00+10:00","end":"2026-06-14T10:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150827336","url":"https://www.realestate.com.au/sold/property-house-nsw-the+ponds-150827336","address":"58 Katoomba Street, The Ponds","price":"$1,355,000","beds":4,"baths":2,"cars":1,"landM2":250,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150928296","url":"https://www.realestate.com.au/sold/property-house-nsw-prospect-150928296","address":"20 Dinton Street, Prospect","price":"$1,262,000","beds":3,"baths":1,"cars":2,"landM2":574.5,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"151000196","url":"https://www.realestate.com.au/property-house-nsw-greystanes-151000196","address":"13 Gipps Road, Greystanes","price":"Under Contract","beds":3,"baths":2,"cars":2,"landM2":575.4,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12","note":"Under contract"},{"id":"150805192","url":"https://www.realestate.com.au/property-house-nsw-ashfield-150805192","address":"53 Milton Street, Ashfield","price":"For Sale - $1,350,000","beds":3,"baths":1,"cars":1,"landM2":240,"type":"House","inspections":[{"start":"2026-06-13T11:00:00+10:00","end":"2026-06-13T11:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151026344","url":"https://www.realestate.com.au/sold/property-house-nsw-engadine-151026344","address":"22 Glenview Place, Engadine","price":"$1,461,000","beds":4,"baths":1,"cars":3,"landM2":594.38,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"151026940","url":"https://www.realestate.com.au/sold/property-house-nsw-merrylands-151026940","address":"30 Yoogali Street, Merrylands","price":"Contact agent","beds":3,"baths":1,"cars":1,"landM2":562.8,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150884056","url":"https://www.realestate.com.au/property-house-nsw-kellyville+ridge-150884056","address":"5 Farrier Way, Kellyville Ridge","price":"$1.3M Guide | Owners Bought Elsewhere | Must Sell!","beds":5,"baths":2,"cars":2,"landM2":562.1,"type":"House","inspections":[{"start":"2026-06-13T11:00:00+10:00","end":"2026-06-13T11:30:00+10:00","label":null},{"start":"2026-06-14T11:00:00+10:00","end":"2026-06-14T11:30:00+10:00","label":null}],"auction":{"value":"2026-06-20T11:30:00+10:00","__typename":"AuctionTime","display":{"longLabel":"Sat 20 Jun at 11:30 am","__typename":"AuctionTimeDisplay"}},"savedAt":"2026-06-12"},{"id":"151054588","url":"https://www.realestate.com.au/sold/property-house-nsw-kellyville+ridge-151054588","address":"14 Glide Place, Kellyville Ridge","price":"$1,350,000","beds":3,"baths":1,"cars":1,"landM2":null,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150916896","url":"https://www.realestate.com.au/sold/property-house-nsw-stanhope+gardens-150916896","address":"51 Kentwell Crescent, Stanhope Gardens","price":"$1,300,000","beds":3,"baths":1,"cars":1,"landM2":null,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"151025760","url":"https://www.realestate.com.au/sold/property-house-nsw-stanhope+gardens-151025760","address":"31 Rochdale Circuit, Stanhope Gardens","price":"Contact agent","beds":3,"baths":2,"cars":2,"landM2":411.4,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150902352","url":"https://www.realestate.com.au/sold/property-house-nsw-kellyville+ridge-150902352","address":"7 Marlow Place, Kellyville Ridge","price":"$1,440,000","beds":4,"baths":3,"cars":2,"landM2":417,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150897636","url":"https://www.realestate.com.au/property-house-nsw-engadine-150897636","address":"21 Lalor Crescent, Engadine","price":"Guide $1,300,000 - $1,430,000","beds":4,"baths":1,"cars":2,"landM2":556.44,"type":"House","inspections":[{"start":"2026-06-13T11:45:00+10:00","end":"2026-06-13T12:15:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150509132","url":"https://www.realestate.com.au/sold/property-house-nsw-seven+hills-150509132","address":"14 Federal Road, Seven Hills","price":"Contact agent","beds":3,"baths":1,"cars":3,"landM2":664,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150416204","url":"https://www.realestate.com.au/property-house-nsw-blacktown-150416204","address":"65 Lock Street, Blacktown","price":"$1,280,000 - $1,330,000","beds":4,"baths":2,"cars":3,"landM2":556,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150442152","url":"https://www.realestate.com.au/sold/property-house-nsw-blacktown-150442152","address":"3 Andre Place, Blacktown","price":"$1,300,000","beds":4,"baths":2,"cars":2,"landM2":496,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"151044856","url":"https://www.realestate.com.au/property-house-nsw-greystanes-151044856","address":"185 Dawn Street, Greystanes","price":"$1,475,000 - DREAM START IN CUL DE SAC ON 626SQM!","beds":4,"baths":2,"cars":3,"landM2":626,"type":"House","inspections":[{"start":"2026-06-13T12:30:00+10:00","end":"2026-06-13T13:00:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150664380","url":"https://www.realestate.com.au/sold/property-house-nsw-greystanes-150664380","address":"30 Tulip Street, Greystanes","price":"$1,450,000","beds":5,"baths":2,"cars":1,"landM2":556.4,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150797776","url":"https://www.realestate.com.au/property-house-nsw-greystanes-150797776","address":"27 Sapphire Street, Greystanes","price":"Price Guide | $1,450,000 - $1,550,000","beds":4,"baths":2,"cars":2,"landM2":562.8,"type":"House","inspections":[{"start":"2026-06-13T11:00:00+10:00","end":"2026-06-13T11:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"149304692","url":"https://www.realestate.com.au/property-house-nsw-ermington-149304692","address":"4 Batten Crescent, Ermington","price":"$1,420,000 - $1,480,000","beds":3,"baths":1,"cars":1,"landM2":543,"type":"House","inspections":[{"start":"2026-06-13T10:15:00+10:00","end":"2026-06-13T10:45:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150615524","url":"https://www.realestate.com.au/property-duplex+semi-detached-nsw-arncliffe-150615524","address":"11 Dowling Street, Arncliffe","price":"FOR SALE | $1,499,000","beds":3,"baths":1,"cars":2,"landM2":341,"type":"Duplex/semi-detached","inspections":[{"start":"2026-06-13T11:15:00+10:00","end":"2026-06-13T11:45:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"151024084","url":"https://www.realestate.com.au/sold/property-house-nsw-engadine-151024084","address":"25 Nelson Street, Engadine","price":"$1,480,000","beds":3,"baths":1,"cars":3,"landM2":676.02,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"151017892","url":"https://www.realestate.com.au/property-house-nsw-engadine-151017892","address":"102a Cooriengah Heights Road, Engadine","price":"Under Contract","beds":3,"baths":1,"cars":2,"landM2":458,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12","note":"Under contract"},{"id":"150880072","url":"https://www.realestate.com.au/sold/property-house-nsw-lugarno-150880072","address":"64 Elm Street, Lugarno","price":"Contact agent","beds":4,"baths":2,"cars":2,"landM2":644,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150861512","url":"https://www.realestate.com.au/sold/property-house-nsw-jannali-150861512","address":"151 Novara Crescent, Jannali","price":"$1,550,000","beds":3,"baths":1,"cars":1,"landM2":588.1,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150833784","url":"https://www.realestate.com.au/sold/property-house-nsw-normanhurst-150833784","address":"2/41 Stuart Avenue, Normanhurst","price":"$1,415,000","beds":3,"baths":1,"cars":1,"landM2":294,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150897972","url":"https://www.realestate.com.au/sold/property-house-nsw-arncliffe-150897972","address":"32 Hirst Street, Arncliffe","price":"$1,350,000","beds":3,"baths":1,"cars":1,"landM2":392,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150894100","url":"https://www.realestate.com.au/sold/property-house-nsw-oyster+bay-150894100","address":"39 Caravan Head Road, Oyster Bay","price":"Contact agent","beds":4,"baths":1,"cars":1,"landM2":1088,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150758708","url":"https://www.realestate.com.au/sold/property-house-nsw-kareela-150758708","address":"18 Ulladulla Place, Kareela","price":"Contact agent","beds":3,"baths":3,"cars":2,"landM2":707,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150683256","url":"https://www.realestate.com.au/sold/property-house-nsw-riverwood-150683256","address":"23 Fullerton Crescent, Riverwood","price":"$1,430,000","beds":3,"baths":2,"cars":2,"landM2":860,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150553684","url":"https://www.realestate.com.au/sold/property-villa-nsw-jannali-150553684","address":"5/85-87 Jannali Avenue, Jannali","price":"Contact agent","beds":2,"baths":1,"cars":1,"landM2":180,"type":"Villa","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150539732","url":"https://www.realestate.com.au/sold/property-house-nsw-kellyville+ridge-150539732","address":"11 Iezza Place, Kellyville Ridge","price":"$1,450,000","beds":4,"baths":2,"cars":2,"landM2":null,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150423520","url":"https://www.realestate.com.au/sold/property-house-nsw-revesby-150423520","address":"153 The River Road, Revesby","price":"Contact agent","beds":3,"baths":1,"cars":2,"landM2":644.96,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150854024","url":"https://www.realestate.com.au/property-house-nsw-blakehurst-150854024","address":"241 West Street, Blakehurst","price":"FOR SALE GUIDE | $1,350,000","beds":3,"baths":1,"cars":2,"landM2":335,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150556848","url":"https://www.realestate.com.au/sold/property-house-nsw-beaumont+hills-150556848","address":"15 Redgum Crescent, Beaumont Hills","price":"Contact agent","beds":4,"baths":1,"cars":1,"landM2":401,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150641488","url":"https://www.realestate.com.au/sold/property-house-nsw-glenwood-150641488","address":"9 Alwyn Crescent, Glenwood","price":"$1,525,000","beds":4,"baths":2,"cars":2,"landM2":530,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150613960","url":"https://www.realestate.com.au/sold/property-house-nsw-padstow-150613960","address":"31 Segers Avenue, Padstow","price":"$1,465,000","beds":3,"baths":2,"cars":2,"landM2":828,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150356936","url":"https://www.realestate.com.au/property-house-nsw-padstow-150356936","address":"166 Alma Road, Padstow","price":"Under Contract","beds":3,"baths":3,"cars":1,"landM2":613,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12","note":"Under contract"},{"id":"150345312","url":"https://www.realestate.com.au/sold/property-house-nsw-woronora+heights-150345312","address":"18 Spoonbill Avenue, Woronora Heights","price":"Contact agent","beds":5,"baths":2,"cars":2,"landM2":659,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150169888","url":"https://www.realestate.com.au/sold/property-house-nsw-gymea-150169888","address":"832 Kingsway, Gymea","price":"$1,510,000","beds":3,"baths":1,"cars":3,"landM2":569,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150861784","url":"https://www.realestate.com.au/sold/property-house-nsw-blacktown-150861784","address":"42 Kent Street, Blacktown","price":"$1,225,000","beds":3,"baths":2,"cars":2,"landM2":665,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150556092","url":"https://www.realestate.com.au/property-house-nsw-grays+point-150556092","address":"126 North West Arm Road, Grays Point","price":"For Sale | $1,200,000 - $1,300,000","beds":4,"baths":1,"cars":2,"landM2":569,"type":"House","inspections":[{"start":"2026-06-13T12:00:00+10:00","end":"2026-06-13T12:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150772592","url":"https://www.realestate.com.au/sold/property-house-nsw-barden+ridge-150772592","address":"2 Mosman Place, Barden Ridge","price":"$1,350,000","beds":3,"baths":1,"cars":1,"landM2":456.6,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150601864","url":"https://www.realestate.com.au/sold/property-house-nsw-greystanes-150601864","address":"255 Old Prospect Road, Greystanes","price":"$1,250,000","beds":2,"baths":1,"cars":1,"landM2":null,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150886888","url":"https://www.realestate.com.au/sold/property-house-nsw-blacktown-150886888","address":"81 Doonside Crescent, Blacktown","price":"$1,190,000","beds":4,"baths":1,"cars":2,"landM2":714.5,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150803228","url":"https://www.realestate.com.au/sold/property-house-nsw-blacktown-150803228","address":"32 Hilltop Avenue, Blacktown","price":"$1,060,000","beds":3,"baths":1,"cars":3,"landM2":556.4,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150777260","url":"https://www.realestate.com.au/sold/property-house-nsw-seven+hills-150777260","address":"35 Orana Avenue, Seven Hills","price":"$1,350,000","beds":3,"baths":2,"cars":10,"landM2":692,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150857196","url":"https://www.realestate.com.au/property-house-nsw-old+toongabbie-150857196","address":"263 Old Windsor Road, Old Toongabbie","price":"Guide $1,150,000","beds":3,"baths":2,"cars":2,"landM2":402,"type":"House","inspections":[{"start":"2026-06-13T15:00:00+10:00","end":"2026-06-13T15:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150429240","url":"https://www.realestate.com.au/sold/property-house-nsw-lalor+park-150429240","address":"200 Frederick Street, Lalor Park","price":"$1,120,000","beds":3,"baths":1,"cars":2,"landM2":569.1,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150535244","url":"https://www.realestate.com.au/sold/property-house-nsw-moorebank-150535244","address":"26 Hennessey Avenue, Moorebank","price":"$1,235,000","beds":4,"baths":3,"cars":1,"landM2":314,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150514100","url":"https://www.realestate.com.au/sold/property-house-nsw-padstow+heights-150514100","address":"14 Bastille Close, Padstow Heights","price":"$1,828,000","beds":4,"baths":3,"cars":2,"landM2":556,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150417516","url":"https://www.realestate.com.au/sold/property-house-nsw-illawong-150417516","address":"99-101 Bignell Street, Illawong","price":"$2,460,000","beds":5,"baths":3,"cars":2,"landM2":619,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150805032","url":"https://www.realestate.com.au/property-house-nsw-peakhurst+heights-150805032","address":"9 Waterside Parade, Peakhurst Heights","price":"For Sale | Price Guide: $1,950,000 - $2,100,000","beds":5,"baths":3,"cars":4,"landM2":556,"type":"House","inspections":[{"start":"2026-06-13T14:15:00+10:00","end":"2026-06-13T14:45:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150537012","url":"https://www.realestate.com.au/sold/property-house-nsw-riverstone-150537012","address":"7 Ryan Crescent, Riverstone","price":"$1,180,000","beds":3,"baths":1,"cars":3,"landM2":558,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150809588","url":"https://www.realestate.com.au/sold/property-house-nsw-hoxton+park-150809588","address":"12 Tamworth Crescent, Hoxton Park","price":"$1,180,000","beds":4,"baths":2,"cars":3,"landM2":498,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150824896","url":"https://www.realestate.com.au/property-house-nsw-glenmore+park-150824896","address":"44 Midin Close, Glenmore Park","price":"Buyers Guide - $999,000","beds":3,"baths":1,"cars":1,"landM2":445,"type":"House","inspections":[{"start":"2026-06-13T12:00:00+10:00","end":"2026-06-13T12:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150410488","url":"https://www.realestate.com.au/sold/property-house-nsw-glenmore+park-150410488","address":"2 Spinosa Place, Glenmore Park","price":"$1,012,000","beds":3,"baths":2,"cars":1,"landM2":444,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150796812","url":"https://www.realestate.com.au/sold/property-villa-nsw-sylvania-150796812","address":"1/27 Endeavour Street, Sylvania","price":"$1,545,000","beds":3,"baths":2,"cars":2,"landM2":null,"type":"Villa","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150458828","url":"https://www.realestate.com.au/property-house-nsw-revesby-150458828","address":"45 Marco Avenue, Revesby","price":"Price Guide $1,300,000","beds":3,"baths":1,"cars":3,"landM2":538,"type":"House","inspections":[{"start":"2026-06-13T11:00:00+10:00","end":"2026-06-13T11:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150803700","url":"https://www.realestate.com.au/sold/property-house-nsw-engadine-150803700","address":"25a Cambrai Avenue, Engadine","price":"$1,760,000","beds":3,"baths":2,"cars":2,"landM2":499.4,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150761028","url":"https://www.realestate.com.au/property-house-nsw-seven+hills-150761028","address":"52 Jean Street, Seven Hills","price":"For Sale","beds":5,"baths":2,"cars":2,"landM2":650,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150638496","url":"https://www.realestate.com.au/sold/property-house-nsw-seven+hills-150638496","address":"33 Jean Street, Seven Hills","price":"$1,250,000","beds":3,"baths":1,"cars":2,"landM2":663.9,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150598892","url":"https://www.realestate.com.au/sold/property-house-nsw-seven+hills-150598892","address":"60 Janice Street, Seven Hills","price":"$1,350,000","beds":4,"baths":2,"cars":2,"landM2":556.4,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150461120","url":"https://www.realestate.com.au/sold/property-house-nsw-blacktown-150461120","address":"227 Flushcombe Road, Blacktown","price":"$1,321,000","beds":5,"baths":2,"cars":3,"landM2":556,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150484492","url":"https://www.realestate.com.au/sold/property-house-nsw-quakers+hill-150484492","address":"12 Denton Grove, Quakers Hill","price":"$1,465,000","beds":4,"baths":2,"cars":2,"landM2":null,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150354328","url":"https://www.realestate.com.au/sold/property-house-nsw-quakers+hill-150354328","address":"110 Pye Road, Quakers Hill","price":"$1,448,000","beds":4,"baths":2,"cars":2,"landM2":null,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"149567252","url":"https://www.realestate.com.au/property-house-nsw-quakers+hill-149567252","address":"24 Isis Place, Quakers Hill","price":"Contact Agent","beds":4,"baths":2,"cars":4,"landM2":560,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150569420","url":"https://www.realestate.com.au/property-house-nsw-greystanes-150569420","address":"41 Runyon Avenue, Greystanes","price":"Price Guide: $1,400,000 - $1,500,000","beds":3,"baths":2,"cars":2,"landM2":557,"type":"House","inspections":[{"start":"2026-06-13T11:00:00+10:00","end":"2026-06-13T11:30:00+10:00","label":null}],"auction":null,"savedAt":"2026-06-12"},{"id":"150782928","url":"https://www.realestate.com.au/property-house-nsw-greystanes-150782928","address":"10 Kalang Road, Greystanes","price":"contact agent","beds":3,"baths":2,"cars":2,"landM2":556.4,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150473516","url":"https://www.realestate.com.au/sold/property-house-nsw-northmead-150473516","address":"6 Harrison Street, Northmead","price":"$1,450,000","beds":4,"baths":2,"cars":3,"landM2":556.4,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"150547892","url":"https://www.realestate.com.au/sold/property-house-nsw-kareela-150547892","address":"9 Inverness Place, Kareela","price":"Contact agent","beds":3,"baths":2,"cars":1,"landM2":569.1,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"},{"id":"149973660","url":"https://www.realestate.com.au/sold/property-house-nsw-blacktown-149973660","address":"5 Sullivan Street, Blacktown","price":"$1,240,000","beds":4,"baths":3,"cars":2,"landM2":562.8,"type":"House","inspections":[],"auction":null,"savedAt":"2026-06-12"}];
 
-const seed = [
-  { id:1, address:'—', suburb:'Merrylands', url:'https://www.realestate.com.au/property-house-nsw-merrylands-151094996', price:'', land:'', beds:'', baths:'', cars:'', inspection:'', inspected:false, status:'active', rating:0, notes:'' },
-  { id:2, address:'—', suburb:'Engadine', url:'https://www.realestate.com.au/property-house-nsw-engadine-151366840', price:'', land:'', beds:'', baths:'', cars:'', inspection:'', inspected:false, status:'active', rating:0, notes:'' },
-  { id:3, address:'—', suburb:'Kirrawee', url:'https://www.realestate.com.au/property-house-nsw-kirrawee-151118220', price:'', land:'', beds:'', baths:'', cars:'', inspection:'', inspected:false, status:'active', rating:0, notes:'' },
-  { id:4, address:'—', suburb:'Padstow Heights', url:'https://www.realestate.com.au/property-house-nsw-padstow+heights-151297004', price:'', land:'', beds:'', baths:'', cars:'', inspection:'', inspected:false, status:'active', rating:0, notes:'' },
-  { id:5, address:'—', suburb:'Engadine (2)', url:'https://www.realestate.com.au/property-house-nsw-engadine-151383988', price:'', land:'', beds:'', baths:'', cars:'', inspection:'', inspected:false, status:'active', rating:0, notes:'' },
-  { id:6, address:'—', suburb:'East Hills', url:'https://www.realestate.com.au/property-house-nsw-east+hills-151361452', price:'', land:'', beds:'', baths:'', cars:'', inspection:'', inspected:false, status:'active', rating:0, notes:'' },
-];
+/* ============ State ============ */
+const LS_KEY = 'rea-tracker-v2';
+let data = load();
 
-let props = [];
-let editId = null;
-let deleteTargetId = null;
-
-// ── Autocomplete ──────────────────────────────────────────────
-let acTimer = null;
-let acResults = [];
-let acIdx = -1;
-let acActive = 'add'; // 'add' or 'edit'
-
-async function fetchAddresses(query) {
-  if (query.length < 4) return [];
-  try {
-    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(query + ' NSW Australia')}&components=administrative_area:NSW|country:AU&key=`;
-    // Use NSW Spatial Services free geocoder (no key needed)
-    const r = await fetch(`https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/suggest?text=${encodeURIComponent(query)}&countryCode=AUS&category=Address&f=json&maxSuggestions=6&searchExtent=140.99,-37.51,153.64,-28.15`);
-    const d = await r.json();
-    return (d.suggestions || []).filter(s => s.text.includes('NSW') || s.text.includes('New South Wales'));
-  } catch { return []; }
-}
-
-async function acInput(val) {
-  clearTimeout(acTimer);
-  const list = document.getElementById('ac-list');
-  if (val.length < 3) { list.style.display = 'none'; return; }
-  acActive = 'add';
-  list.innerHTML = '<div class="ac-loading"><i class="ti ti-loader" style="font-size:13px"></i> Searching…</div>';
-  list.style.display = 'block';
-  acTimer = setTimeout(() => doSearch(val, 'ac-list', 'f-addr', 'f-suburb'), 350);
-}
-
-async function acInputEdit(val) {
-  clearTimeout(acTimer);
-  const list = document.getElementById('ac-list-edit');
-  if (val.length < 3) { list.style.display = 'none'; return; }
-  acActive = 'edit';
-  list.innerHTML = '<div class="ac-loading"><i class="ti ti-loader" style="font-size:13px"></i> Searching…</div>';
-  list.style.display = 'block';
-  acTimer = setTimeout(() => doSearch(val, 'ac-list-edit', 'e-addr', 'e-suburb'), 350);
-}
-
-async function doSearch(val, listId, addrId, suburbId) {
-  const suggestions = await fetchAddresses(val);
-  const list = document.getElementById(listId);
-  if (!suggestions.length) {
-    list.innerHTML = '<div class="ac-loading">No NSW addresses found. Try a more specific address.</div>';
-    return;
-  }
-  acResults = suggestions;
-  acIdx = -1;
-  list.innerHTML = suggestions.map((s, i) => {
-    const parts = s.text.split(',');
-    const main = parts[0] || s.text;
-    const sub = parts.slice(1).join(',').trim();
-    return `<div class="ac-item" data-idx="${i}" onmousedown="selectAddress(${i},'${listId}','${addrId}','${suburbId}')">
-      <i class="ti ti-map-pin" aria-hidden="true"></i>
-      <div><div class="ac-main">${main}</div><div class="ac-sub">${sub}</div></div>
-    </div>`;
-  }).join('');
-}
-
-function selectAddress(idx, listId, addrId, suburbId) {
-  const s = acResults[idx];
-  if (!s) return;
-  const parts = s.text.split(',');
-  const street = parts[0].trim();
-  // Extract suburb: look for NSW part, suburb is usually 2nd segment
-  let suburb = '';
-  for (let i = 1; i < parts.length; i++) {
-    const p = parts[i].trim();
-    if (!p.match(/NSW|New South Wales|\d{4}|Australia/i) && p.length > 1) { suburb = p; break; }
-  }
-  document.getElementById(addrId).value = street;
-  if (suburb) document.getElementById(suburbId).value = suburb;
-  document.getElementById(listId).style.display = 'none';
-  acResults = [];
-}
-
-function acKey(e) { handleAcKey(e, 'ac-list', 'f-addr', 'f-suburb'); }
-function acKeyEdit(e) { handleAcKey(e, 'ac-list-edit', 'e-addr', 'e-suburb'); }
-
-function handleAcKey(e, listId, addrId, suburbId) {
-  const list = document.getElementById(listId);
-  const items = list.querySelectorAll('.ac-item');
-  if (!items.length) return;
-  if (e.key === 'ArrowDown') { e.preventDefault(); acIdx = Math.min(acIdx+1, items.length-1); items.forEach((el,i)=>el.classList.toggle('active',i===acIdx)); }
-  else if (e.key === 'ArrowUp') { e.preventDefault(); acIdx = Math.max(acIdx-1, 0); items.forEach((el,i)=>el.classList.toggle('active',i===acIdx)); }
-  else if (e.key === 'Enter' && acIdx >= 0) { e.preventDefault(); selectAddress(acIdx, listId, addrId, suburbId); }
-  else if (e.key === 'Escape') { list.style.display = 'none'; }
-}
-
-document.addEventListener('click', e => {
-  if (!e.target.closest('.ac-wrap')) {
-    document.getElementById('ac-list').style.display = 'none';
-    document.getElementById('ac-list-edit').style.display = 'none';
-  }
-});
-
-// ── Data ──────────────────────────────────────────────────────
 function load() {
-  // Prefer chrome.storage (shared with extension) if available
-  if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
-    chrome.storage.local.get(STORE_KEY, result => {
-      try {
-        const raw = result[STORE_KEY];
-        props = raw ? JSON.parse(raw) : seed;
-      } catch { props = seed; }
-      render();
-    });
-    return; // render called async above
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch (e) {}
+  return SEED.map(x => ({ ...x, status: x.status || 'New' }));
+}
+function save() { localStorage.setItem(LS_KEY, JSON.stringify(data)); }
+
+/* ============ Parsing helpers ============ */
+function priceNum(p) {
+  const m = (p || '').replace(/,/g, '').match(/\$\s?(\d{5,9})/);
+  return m ? +m[1] : null;
+}
+const MONTHS = { jan:0, feb:1, mar:2, apr:3, may:4, jun:5, jul:6, aug:7, sep:8, oct:9, nov:10, dec:11 };
+
+// Parse "Sat 14 Jun 9:45am" / "Inspection Sat 14 Jun 9:45am - 10:15am" → {start: Date, end: Date}
+function parseInspection(s, savedAt) {
+  if (!s) return null;
+  const m = s.match(/(\d{1,2})\s+([a-z]{3})[a-z]*[\s,]*(?:(\d{1,2})[:.](\d{2})\s*(am|pm))?(?:\s*[-–]\s*(\d{1,2})[:.](\d{2})\s*(am|pm))?/i);
+  if (!m) return null;
+  const day = +m[1], mon = MONTHS[m[2].toLowerCase()];
+  if (mon === undefined) return null;
+  const ref = savedAt ? new Date(savedAt) : new Date();
+  let year = ref.getFullYear();
+  let d = new Date(year, mon, day);
+  // If the date is far in the past relative to scrape date, it's next year
+  if (d < ref && (ref - d) > 45 * 864e5) d = new Date(year + 1, mon, day);
+  let start = new Date(d), end = null;
+  if (m[3]) {
+    let h = +m[3] % 12; if (/pm/i.test(m[5])) h += 12;
+    start.setHours(h, +m[4], 0, 0);
+    if (m[6]) {
+      let h2 = +m[6] % 12; if (/pm/i.test(m[8])) h2 += 12;
+      end = new Date(d); end.setHours(h2, +m[7], 0, 0);
+    } else { end = new Date(start.getTime() + 30 * 6e4); }
   }
-  try { const raw = localStorage.getItem(STORE_KEY); props = raw ? JSON.parse(raw) : seed; }
-  catch { props = seed; }
+  return { start, end };
 }
 
-function save() {
-  const json = JSON.stringify(props);
-  // Write to both storages so it works with and without the extension
-  try { localStorage.setItem(STORE_KEY, json); } catch {}
-  if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
-    chrome.storage.local.set({ [STORE_KEY]: json });
+function slotsOf(x) {
+  // ISO inspections from the deep scraper: [{start, end, label}]
+  if (Array.isArray(x.inspections) && x.inspections.length && x.inspections[0]?.start) {
+    return x.inspections.map(i => {
+      const start = new Date(i.start);
+      const end = i.end ? new Date(i.end) : new Date(start.getTime() + 30 * 6e4);
+      return { start, end };
+    }).filter(s => !isNaN(s.start));
   }
+  // Fallback: text inspection from card scrape
+  const t = parseInspection(x.inspection, x.savedAt);
+  return t ? [t] : [];
+}
+function enrich(x) {
+  const slots = slotsOf(x).sort((a, b) => a.start - b.start);
+  // "next" = first upcoming slot (12h grace), else the last known one
+  const next = slots.find(s => s.start.getTime() > Date.now() - 12 * 36e5) || slots[slots.length - 1] || null;
+  return { ...x, priceNum: priceNum(x.price), slots,
+    inspTs: next ? next.start.getTime() : null, inspStart: next?.start, inspEnd: next?.end };
 }
 
-function parsePrice(p) {
-  if (!p) return null;
-  let s = String(p).toLowerCase().replace(/[$,\s]/g, '');
-  let mult = 1;
-  if (s.endsWith('m')) { mult = 1e6; s = s.slice(0,-1); }
-  else if (s.endsWith('k')) { mult = 1e3; s = s.slice(0,-1); }
-  const n = parseFloat(s);
-  return isNaN(n) ? null : n * mult;
+/* ============ Listings table ============ */
+let sortKey = 'address', sortDir = 1;
+
+function suburbOf(x) { return (x.address || '').split(',').pop().trim(); }
+
+/* ============ Region zones ============ */
+const ZONES = {
+  'Sutherland Shire': ['Bangor','Barden Ridge','Bonnet Bay','Engadine','Grays Point','Gymea','Heathcote','Illawong','Jannali','Kareela','Kirrawee','Loftus','Menai','Miranda','Oyster Bay','Sutherland','Sylvania','Woronora Heights','Yarrawarrah','Caringbah','Caringbah South','Gymea Bay','Alfords Point'],
+  'St George': ['Arncliffe','Bexley','Bexley North','Blakehurst','Carlton','Hurstville','Kingsgrove','Lugarno','Mortdale','Narwee','Oatley','Peakhurst','Peakhurst Heights','Penshurst','Riverwood','South Hurstville'],
+  'Bankstown / East Hills': ['East Hills','Padstow','Padstow Heights','Panania','Picnic Point','Revesby','Revesby Heights','Milperra','Condell Park'],
+  'Canterbury / Inner West': ['Ashfield','Belmore','Beverly Hills','Campsie','Clemton Park','Earlwood','Kingsgrove','Lakemba','Roselands','Wiley Park'],
+  'Parramatta / Cumberland': ['Constitution Hill','Ermington','Girraween','Greystanes','Guildford','Merrylands','Northmead','Old Toongabbie','Pemulwuy','Pendle Hill','Prospect','South Wentworthville','Toongabbie','Wentworthville','Westmead','Winston Hills'],
+  'Blacktown': ['Blacktown','Doonside','Kings Langley','Kings Park','Lalor Park','Marayong','Seven Hills'],
+  'Hills District': ['Baulkham Hills','Beaumont Hills','Bella Vista','Castle Hill','Kellyville','Kellyville Ridge','North Kellyville','Rouse Hill'],
+  'North West Growth': ['Acacia Gardens','Box Hill','Glenwood','Marsden Park','Parklea','Quakers Hill','Riverstone','Schofields','Stanhope Gardens','Tallawong','The Ponds'],
+  'Hornsby / Upper North': ['Asquith','Hornsby','Hornsby Heights','Mount Colah','Mount Kuring-gai','Normanhurst','Thornleigh','Waitara'],
+  'Outer West / South West': ['Erskine Park','Glenmore Park','Hoxton Park','Moorebank','St Clair','Werrington'],
+};
+const SUBURB_ZONE = {};
+Object.entries(ZONES).forEach(([z, subs]) => subs.forEach(s => SUBURB_ZONE[s.toLowerCase()] = z));
+const ZONE_ORDER = [...Object.keys(ZONES), 'Other'];
+function zoneOf(x) { return SUBURB_ZONE[suburbOf(x).toLowerCase()] || 'Other'; }
+
+function renderControls() {
+  const zones = ZONE_ORDER.filter(z => data.some(x => zoneOf(x) === z));
+  const sel = document.getElementById('fSuburb');
+  const cur = sel.value;
+  sel.innerHTML = '<option value="">All regions</option>' + zones.map(z => `<option>${z}</option>`).join('');
+  sel.value = cur;
 }
 
-function fmtPrice(p) {
-  const n = parsePrice(p);
-  if (!n) return null;
-  if (n >= 1e6) return '$' + (n/1e6).toFixed(n%1e6===0?0:2).replace(/\.?0+$/,'') + 'm';
-  if (n >= 1e3) return '$' + Math.round(n/1e3) + 'k';
-  return '$' + Math.round(n).toLocaleString();
-}
+function renderTable() {
+  const q = document.getElementById('q').value.toLowerCase();
+  const fs = document.getElementById('fStatus').value;
+  const fsub = document.getElementById('fSuburb').value;
 
-function tagHtml(p) {
-  if (p.inspected || p.status==='inspected') return '<span class="tag tag-inspected"><i class="ti ti-check" style="font-size:11px"></i> Inspected</span>';
-  if (p.status==='passed') return '<span class="tag tag-passed">Passed</span>';
-  if (p.status==='purchased') return '<span class="tag tag-purchased"><i class="ti ti-home-check" style="font-size:11px"></i> Purchased</span>';
-  return '<span class="tag tag-active">Active</span>';
-}
+  let rows = data.map(enrich).filter(x =>
+    (!q || x.address.toLowerCase().includes(q)) &&
+    (!fs || (x.status || 'New') === fs) &&
+    (!fsub || zoneOf(x) === fsub)
+  );
 
-function metaItem(icon, val, placeholder) {
-  if (val) return `<div class="meta-item"><i class="ti ti-${icon}" aria-hidden="true"></i><span class="val">${val}</span></div>`;
-  return `<div class="meta-item"><i class="ti ti-${icon}" aria-hidden="true"></i><span class="empty-val">${placeholder}</span></div>`;
-}
-
-// ── Render ────────────────────────────────────────────────────
-function render() {
-  const q = (document.getElementById('search').value||'').toLowerCase();
-  const fs = document.getElementById('filter-status').value;
-  const sort = document.getElementById('sort').value;
-
-  let list = props.filter(p => {
-    const text = (p.address+' '+p.suburb+' '+p.notes).toLowerCase();
-    const matchQ = !q || text.includes(q);
-    let matchS = true;
-    if (fs==='active') matchS = p.status==='active' && !p.inspected;
-    else if (fs==='inspected') matchS = p.inspected || p.status==='inspected';
-    else if (fs==='passed') matchS = p.status==='passed';
-    return matchQ && matchS;
+  rows.sort((a, b) => {
+    let va = a[sortKey], vb = b[sortKey];
+    if (va == null) return 1; if (vb == null) return -1;
+    if (typeof va === 'string') return va.localeCompare(vb) * sortDir;
+    return (va - vb) * sortDir;
   });
 
-  if (sort==='price-asc') list.sort((a,b)=>(parsePrice(a.price)||9e9)-(parsePrice(b.price)||9e9));
-  else if (sort==='price-desc') list.sort((a,b)=>(parsePrice(b.price)||0)-(parsePrice(a.price)||0));
-  else if (sort==='rating') list.sort((a,b)=>b.rating-a.rating);
+  // Group into region zones, keeping sort order within each zone
+  const grouped = new Map();
+  ZONE_ORDER.forEach(z => grouped.set(z, []));
+  rows.forEach(x => grouped.get(zoneOf(x)).push(x));
 
-  const prices = props.map(p=>parsePrice(p.price)).filter(Boolean);
-  const avg = prices.length ? Math.round(prices.reduce((a,b)=>a+b,0)/prices.length) : null;
-  document.getElementById('stats').innerHTML = `
-    <div class="stat"><div class="label">Saved</div><div class="val">${props.length}</div><div class="sub">properties</div></div>
-    <div class="stat"><div class="label">Inspected</div><div class="val">${props.filter(p=>p.inspected||p.status==='inspected').length}</div><div class="sub">of ${props.length}</div></div>
-    <div class="stat"><div class="label">Avg price</div><div class="val">${avg?fmtPrice(avg):'—'}</div><div class="sub">${prices.length} priced</div></div>
-    <div class="stat"><div class="label">Shortlisted</div><div class="val">${props.filter(p=>p.rating>=4).length}</div><div class="sub">rated 4–5 ★</div></div>
-  `;
+  document.getElementById('rows').innerHTML = [...grouped.entries()]
+    .filter(([, items]) => items.length)
+    .map(([zone, items]) =>
+      `<tr class="zonehead"><td colspan="7">${zone} <span class="zcount">${items.length}</span></td></tr>` +
+      items.map(x => {
+    const [street, ...rest] = x.address.split(',');
+    const insp = x.inspStart
+      ? `<span class="insp">${x.inspStart.toLocaleDateString('en-AU',{weekday:'short',day:'numeric',month:'short'})}${x.inspStart.getHours() ? ' ' + fmtTime(x.inspStart) : ''}</span>`
+      : '<span style="color:var(--ink-2)">—</span>';
+    const st = x.status || 'New';
+    return `<tr class="r-${st.toLowerCase()}">
+      <td class="addr"><a href="${x.url}" target="_blank" rel="noopener">${street}</a><br><span class="suburb">${rest.join(',').trim()}${x.note ? ' · <span style="color:var(--warn)">' + x.note + '</span>' : ''}</span></td>
+      <td class="num">${x.priceNum ? '$' + x.priceNum.toLocaleString() : (x.price || '—')}</td>
+      <td class="bbc"><b>${x.beds ?? '–'}</b> bd&nbsp; <b>${x.baths ?? '–'}</b> ba&nbsp; <b>${x.cars ?? '–'}</b> car</td>
+      <td class="num">${x.landM2 ? x.landM2.toLocaleString() + ' m²' : '—'}</td>
+      <td>${insp}</td>
+      <td><select class="status s-${st.toLowerCase()}" data-id="${x.id}">
+        ${['New','Shortlist','Inspect','Offer','Pass'].map(s => `<option ${s===st?'selected':''}>${s}</option>`).join('')}
+      </select></td>
+      <td><a class="maps" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(x.address + ' NSW')}">map ↗</a></td>
+    </tr>`;
+      }).join('')
+    ).join('');
 
-  const el = document.getElementById('cards');
-  if (!list.length) { el.innerHTML = '<div class="empty-state"><i class="ti ti-building-estate" aria-hidden="true"></i><p>No properties match your filters.</p></div>'; return; }
-
-  el.innerHTML = list.map(p => {
-    const priceDisplay = parsePrice(p.price) ? fmtPrice(p.price) : null;
-    const stars = [1,2,3,4,5].map(i=>`<span class="star${p.rating>=i?' on':''}" onclick="rate(${p.id},${i})">★</span>`).join('');
-    const statusClass = (p.inspected||p.status==='inspected') ? 'inspected' : p.status==='passed' ? 'passed' : '';
-    const addrDisplay = p.address && p.address!=='—' ? p.address : '<span style="color:var(--text3);font-weight:400">Address not set</span>';
-    return `
-    <div class="card ${statusClass}" id="card-${p.id}">
-      <div class="card-top">
-        <div class="card-addr-wrap">
-          <div class="card-street">${addrDisplay} ${tagHtml(p)}</div>
-          <div class="card-suburb">${p.suburb}${p.suburb && p.address && p.address!=='—' ? ', NSW' : ''}</div>
-        </div>
-        <div class="card-right">
-          <div class="${priceDisplay?'price':'price empty'}">${priceDisplay||'Price TBC'}</div>
-        </div>
-      </div>
-      <div class="card-meta">
-        ${metaItem('ruler-2', p.land?p.land+'m²':'', 'Land?')}
-        <div class="divider"></div>
-        ${metaItem('bed', p.beds, 'Beds?')}
-        ${metaItem('bath', p.baths, 'Baths?')}
-        ${metaItem('car', p.cars, 'Cars?')}
-        <div class="divider"></div>
-        ${metaItem('calendar', p.inspection, 'No inspection set')}
-      </div>
-      <div class="card-bottom">
-        ${p.url ? `<a class="link-btn" href="${p.url}" target="_blank" rel="noopener"><i class="ti ti-external-link"></i> View listing</a><div class="divider"></div>` : ''}
-        <button class="btn btn-sm" onclick="openEdit(${p.id})"><i class="ti ti-edit" aria-hidden="true"></i> Edit</button>
-        <button class="btn btn-sm" onclick="toggleInspect(${p.id})" style="${p.inspected||p.status==='inspected'?'color:var(--accent-text);border-color:var(--accent);background:var(--accent-bg)':''}">
-          <i class="ti ti-${p.inspected||p.status==='inspected'?'check':'walk'}" aria-hidden="true"></i>
-          ${p.inspected||p.status==='inspected'?'Inspected':'Mark inspected'}
-        </button>
-        <button class="btn btn-sm btn-danger" onclick="confirmDelete(${p.id})" title="Remove property"><i class="ti ti-trash" aria-hidden="true"></i></button>
-        <div class="spacer"></div>
-        <div class="rating">${stars}</div>
-      </div>
-      <div class="notes"><input type="text" value="${(p.notes||'').replace(/"/g,'&quot;')}" placeholder="Add notes…" onchange="updNotes(${p.id},this.value)"></div>
-    </div>`;
-  }).join('');
+  document.getElementById('cListings').textContent = data.length;
+  document.querySelectorAll('select.status').forEach(s => s.onchange = e => {
+    const rec = data.find(x => String(x.id) === e.target.dataset.id);
+    if (rec) { rec.status = e.target.value; save(); renderAll(); }
+  });
 }
 
-// ── Add property ──────────────────────────────────────────────
-function toggleAddForm() {
-  const f = document.getElementById('add-form');
-  f.classList.toggle('visible');
-  if (f.classList.contains('visible')) document.getElementById('f-addr').focus();
+function fmtTime(d) {
+  return d.toLocaleTimeString('en-AU', { hour: 'numeric', minute: '2-digit' }).replace(' ', '').toLowerCase();
 }
 
-function addProperty() {
-  const addr = document.getElementById('f-addr').value.trim();
-  const suburb = document.getElementById('f-suburb').value.trim();
-  if (!suburb && !addr) { toast('Please enter at least a suburb or address.'); return; }
-  const newId = props.length ? Math.max(...props.map(p=>p.id))+1 : 1;
-  props.push({ id:newId, address:addr||'—', suburb:suburb||'—', url:document.getElementById('f-url').value.trim(), price:document.getElementById('f-price').value.trim(), land:document.getElementById('f-land').value.trim(), beds:document.getElementById('f-beds').value.trim(), baths:document.getElementById('f-baths').value.trim(), cars:document.getElementById('f-cars').value.trim(), inspection:document.getElementById('f-inspection').value.trim(), inspected:false, status:'active', rating:0, notes:'' });
-  save();
-  ['f-addr','f-suburb','f-price','f-land','f-beds','f-baths','f-cars','f-url','f-inspection'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('add-form').classList.remove('visible');
-  render();
-  toast('Property added.');
-}
+/* ============ Schedule ============ */
+function renderSchedule() {
+  // Expand every slot of every non-Pass listing into individual stops
+  const stops = [];
+  data.map(enrich).forEach(x => {
+    if ((x.status || 'New') === 'Pass') return;
+    x.slots.forEach(s => stops.push({ ...x, inspStart: s.start, inspEnd: s.end, inspTs: s.start.getTime() }));
+  });
+  // Only show stops from 12h ago onward
+  const upcoming = stops.filter(s => s.inspTs > Date.now() - 12 * 36e5).sort((a, b) => a.inspTs - b.inspTs);
 
-// ── Edit modal ────────────────────────────────────────────────
-function openEdit(id) {
-  editId = id;
-  const p = props.find(x=>x.id===id);
-  if (!p) return;
-  document.getElementById('e-addr').value = p.address==='—'?'':p.address;
-  document.getElementById('e-suburb').value = p.suburb;
-  document.getElementById('e-price').value = p.price;
-  document.getElementById('e-land').value = p.land;
-  document.getElementById('e-beds').value = p.beds;
-  document.getElementById('e-baths').value = p.baths;
-  document.getElementById('e-cars').value = p.cars;
-  document.getElementById('e-url').value = p.url;
-  document.getElementById('e-inspection').value = p.inspection;
-  document.getElementById('e-status').value = p.inspected?'inspected':p.status;
-  document.getElementById('e-notes').value = p.notes;
-  document.getElementById('edit-overlay').classList.add('open');
-  setTimeout(()=>document.getElementById('e-addr').focus(), 50);
-}
+  document.getElementById('cSchedule').textContent = upcoming.length;
+  document.getElementById('schedMeta').textContent = upcoming.length
+    ? `${upcoming.length} inspection${upcoming.length > 1 ? 's' : ''} scheduled` : '';
 
-function saveEdit() {
-  const p = props.find(x=>x.id===editId);
-  if (!p) return;
-  p.address = document.getElementById('e-addr').value.trim()||'—';
-  p.suburb = document.getElementById('e-suburb').value.trim()||p.suburb;
-  p.price = document.getElementById('e-price').value.trim();
-  p.land = document.getElementById('e-land').value.trim();
-  p.beds = document.getElementById('e-beds').value.trim();
-  p.baths = document.getElementById('e-baths').value.trim();
-  p.cars = document.getElementById('e-cars').value.trim();
-  p.url = document.getElementById('e-url').value.trim();
-  p.inspection = document.getElementById('e-inspection').value.trim();
-  const st = document.getElementById('e-status').value;
-  p.status = st; p.inspected = st==='inspected';
-  p.notes = document.getElementById('e-notes').value.trim();
-  save(); render();
-  document.getElementById('edit-overlay').classList.remove('open');
-  toast('Changes saved.');
-}
-
-function closeEdit(e) {
-  if (!e || e.target===document.getElementById('edit-overlay')) {
-    document.getElementById('edit-overlay').classList.remove('open');
-    document.getElementById('ac-list-edit').style.display='none';
+  const el = document.getElementById('schedule');
+  if (!upcoming.length) {
+    el.innerHTML = `<div class="empty"><b>No inspections captured yet.</b><br>
+      REA cards usually show times from mid-week — re-run the scraper Thursday or Friday and merge via the Import tab.</div>`;
+    return;
   }
+
+  const byDay = {};
+  upcoming.forEach(x => {
+    const k = x.inspStart.toDateString();
+    (byDay[k] = byDay[k] || []).push(x);
+  });
+
+  el.innerHTML = Object.entries(byDay).map(([day, stops]) => `
+    <div class="day">
+      <div class="dayhead">
+        <span class="d">${new Date(day).toLocaleDateString('en-AU',{weekday:'long', day:'numeric', month:'long'})}</span>
+        <span class="n">${stops.length} stop${stops.length > 1 ? 's' : ''}</span>
+      </div>
+      ${stops.map(x => `
+        <div class="stop">
+          <div class="time">${x.inspStart.getHours() ? fmtTime(x.inspStart) : 'TBC'}</div>
+          <div class="body">
+            <a href="${x.url}" target="_blank" rel="noopener">${x.address}</a>
+            <div class="sub">${zoneOf(x)} · ${x.beds ?? '–'} bd · ${x.baths ?? '–'} ba · ${x.cars ?? '–'} car${x.landM2 ? ' · ' + x.landM2 + ' m²' : ''} · ${x.price || ''}</div>
+          </div>
+          <a class="maps" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(x.address + ' NSW')}">directions ↗</a>
+        </div>`).join('')}
+    </div>`).join('');
 }
 
-// ── Delete ────────────────────────────────────────────────────
-function confirmDelete(id) {
-  deleteTargetId = id;
-  const p = props.find(x=>x.id===id);
-  const name = p ? (p.address!=='—'?p.address:p.suburb) : 'this property';
-  document.getElementById('confirm-msg').textContent = `"${name}" will be permanently removed from your tracker.`;
-  document.getElementById('confirm-overlay').classList.add('open');
-  // Also close edit modal if open
-  document.getElementById('edit-overlay').classList.remove('open');
+/* ============ ICS export ============ */
+function icsDate(d) {
+  return d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
 }
-
-function doDelete() {
-  props = props.filter(p=>p.id!==deleteTargetId);
-  save(); render();
-  document.getElementById('confirm-overlay').classList.remove('open');
-  toast('Property removed.');
-}
-
-function closeConfirm() { document.getElementById('confirm-overlay').classList.remove('open'); }
-
-// ── Actions ───────────────────────────────────────────────────
-function toggleInspect(id) {
-  const p = props.find(x=>x.id===id);
-  if (!p) return;
-  const was = p.inspected||p.status==='inspected';
-  p.inspected = !was; p.status = p.inspected?'inspected':'active';
-  save(); render();
-}
-
-function rate(id, val) {
-  const p = props.find(x=>x.id===id);
-  if (!p) return;
-  p.rating = p.rating===val?0:val;
-  save(); render();
-}
-
-function updNotes(id, val) {
-  const p = props.find(x=>x.id===id);
-  if (p) { p.notes=val; save(); }
-}
-
-function exportCSV() {
-  const cols = ['Address','Suburb','Price','Land (m²)','Beds','Baths','Cars','Inspection','Inspected','Status','Rating','Notes','URL'];
-  const rows = props.map(p=>[p.address,p.suburb,p.price,p.land,p.beds,p.baths,p.cars,p.inspection,p.inspected?'Yes':'No',p.status,p.rating,p.notes,p.url].map(v=>`"${String(v||'').replace(/"/g,'""')}"`).join(','));
-  const csv = [cols.join(','),...rows].join('\n');
+document.getElementById('exportIcs').onclick = () => {
+  const events = [];
+  data.map(enrich).forEach(x => {
+    if ((x.status || 'New') === 'Pass') return;
+    x.slots.forEach(s => {
+      if (s.start.getHours() && s.start.getTime() > Date.now() - 12 * 36e5) events.push({ x, s });
+    });
+  });
+  if (!events.length) return alert('No timed inspections to export yet.');
+  const ev = events.map(({ x, s }) => [
+    'BEGIN:VEVENT',
+    `UID:rea-${x.id}-${s.start.getTime()}@property-tracker`,
+    `DTSTAMP:${icsDate(new Date())}`,
+    `DTSTART:${icsDate(s.start)}`,
+    `DTEND:${icsDate(s.end || new Date(s.start.getTime() + 30*6e4))}`,
+    `SUMMARY:Inspection — ${x.address.replace(/,/g, '\\,')}`,
+    `LOCATION:${x.address.replace(/,/g, '\\,')}\\, NSW`,
+    `DESCRIPTION:${(x.price || '').replace(/,/g, '\\,')} · ${x.beds}bd ${x.baths}ba ${x.cars}car\\n${x.url}`,
+    'END:VEVENT'
+  ].join('\r\n')).join('\r\n');
+  const ics = `BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//property-tracker//EN\r\n${ev}\r\nEND:VCALENDAR`;
   const a = document.createElement('a');
-  a.href = 'data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(csv);
-  a.download = 'properties.csv'; a.click();
-  toast('CSV exported.');
-}
+  a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' }));
+  a.download = 'inspections.ics';
+  a.click();
+};
 
-function toast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'), 2500);
+/* ============ Import / merge ============ */
+function mergeIn(incoming) {
+  const byId = new Map(data.map(x => [String(x.id), x]));
+  let added = 0, updated = 0;
+  incoming.forEach(n => {
+    const old = byId.get(String(n.id));
+    if (old) {
+      Object.assign(old, n, { status: old.status });  // fresh scrape wins, status preserved
+      updated++;
+    } else {
+      data.push({ ...n, status: 'New' });
+      added++;
+    }
+  });
+  save();
+  return { added, updated };
 }
+document.getElementById('doImport').onclick = async () => {
+  let txt = document.getElementById('paste').value.trim();
+  const f = document.getElementById('file').files[0];
+  if (f) txt = await f.text();
+  try {
+    const arr = JSON.parse(txt);
+    if (!Array.isArray(arr)) throw 0;
+    const r = mergeIn(arr);
+    document.getElementById('importMsg').textContent = `Merged: ${r.added} new, ${r.updated} updated.`;
+    document.getElementById('paste').value = '';
+    renderAll();
+  } catch {
+    document.getElementById('importMsg').textContent = 'Could not parse that — expected a JSON array from the scraper.';
+  }
+};
+document.getElementById('resetData').onclick = () => {
+  if (!confirm('Replace all local data with the embedded seed?')) return;
+  localStorage.removeItem(LS_KEY);
+  data = load(); save(); renderAll();
+  document.getElementById('importMsg').textContent = 'Reset done.';
+};
 
-document.addEventListener('keydown', e => {
-  if (e.key==='Escape') { closeEdit(); closeConfirm(); }
+/* ============ Export JSON ============ */
+document.getElementById('exportJson').onclick = () => {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
+  a.download = `tracker-export-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+};
+
+/* ============ Tabs & sort ============ */
+document.querySelectorAll('nav button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('nav button').forEach(x => x.classList.toggle('active', x === b));
+  ['listings','schedule','import'].forEach(t =>
+    document.getElementById('tab-' + t).hidden = (t !== b.dataset.tab));
 });
+document.querySelectorAll('th[data-sort]').forEach(th => th.onclick = () => {
+  const k = th.dataset.sort;
+  if (sortKey === k) sortDir *= -1; else { sortKey = k; sortDir = 1; }
+  document.querySelectorAll('th .arrow').forEach(a => a.textContent = '');
+  th.querySelector('.arrow').textContent = sortDir > 0 ? '▲' : '▼';
+  renderTable();
+});
+['q','fStatus','fSuburb'].forEach(id => document.getElementById(id).oninput = renderTable);
 
-load(); render();
+/* ============ Boot ============ */
+function renderAll() {
+  renderControls(); renderTable(); renderSchedule();
+  document.getElementById('meta').textContent =
+    `${data.length} saved · last scrape ${data.reduce((m,x) => x.savedAt > m ? x.savedAt : m, '')}`;
+}
+renderAll();
+
+/* Live refresh when the Chrome extension pushes a new sync */
+window.addEventListener('rea-sync', (e) => {
+  data = load();
+  renderAll();
+  const t = e.detail?.syncedAt ? new Date(e.detail.syncedAt).toLocaleString('en-AU', { weekday:'short', hour:'numeric', minute:'2-digit' }) : '';
+  document.getElementById('meta').textContent =
+    `${data.length} saved · synced ${t}${e.detail?.added ? ' · +' + e.detail.added + ' new' : ''}`;
+});
 </script>
 </body>
 </html>
