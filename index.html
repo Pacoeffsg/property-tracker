@@ -84,6 +84,16 @@
   select.status.s-offer { border-color: var(--warn); color: var(--warn); }
   select.status.s-pass { opacity: .45; }
   tr.r-pass td { opacity: .45; }
+  /* status row highlights */
+  tr.r-shortlist td { background: var(--accent-soft); }
+  tr.r-shortlist td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
+  tr.r-inspect td { background: var(--good-soft); }
+  tr.r-inspect td:first-child { box-shadow: inset 3px 0 0 var(--good); }
+  tr.r-offer td { background: #FFF4E5; }
+  tr.r-offer td:first-child { box-shadow: inset 3px 0 0 var(--warn); }
+  tr.r-gone td { opacity: .45; }
+  tr.r-gone td.addr a, tr.r-gone td.num, tr.r-gone .bbc { text-decoration: line-through; text-decoration-color: var(--ink-2); }
+  .gone-tag { font-size: 11px; font-weight: 600; color: var(--warn); text-transform: uppercase; letter-spacing: .05em; text-decoration: none !important; display: inline-block; margin-top: 2px; }
   .maps { font-size: 12px; color: var(--ink-2); text-decoration: none; }
   .maps:hover { color: var(--accent); }
 
@@ -286,6 +296,13 @@ Object.entries(ZONES).forEach(([z, subs]) => subs.forEach(s => SUBURB_ZONE[s.toL
 const ZONE_ORDER = [...Object.keys(ZONES), 'Other'];
 function zoneOf(x) { return SUBURB_ZONE[suburbOf(x).toLowerCase()] || 'Other'; }
 
+/* Under contract / sold detection — "Auction Unless Sold Prior" is still active */
+function isGone(x) {
+  if (x.note && /under contract|sold/i.test(x.note)) return true;
+  const p = x.price || '';
+  return /under\s+(contract|offer)/i.test(p) || /\bsold on\b/i.test(p) || /^sold\b/i.test(p.trim());
+}
+
 function renderControls() {
   const zones = ZONE_ORDER.filter(z => data.some(x => zoneOf(x) === z));
   const sel = document.getElementById('fSuburb');
@@ -312,10 +329,11 @@ function renderTable() {
     return (va - vb) * sortDir;
   });
 
-  // Group into region zones, keeping sort order within each zone
+  // Group into region zones, keeping sort order within each zone; crossed-out listings sink to the bottom
   const grouped = new Map();
   ZONE_ORDER.forEach(z => grouped.set(z, []));
   rows.forEach(x => grouped.get(zoneOf(x)).push(x));
+  grouped.forEach(items => items.sort((a, b) => (isGone(a) ? 1 : 0) - (isGone(b) ? 1 : 0)));
 
   document.getElementById('rows').innerHTML = [...grouped.entries()]
     .filter(([, items]) => items.length)
@@ -327,8 +345,8 @@ function renderTable() {
       ? `<span class="insp">${x.inspStart.toLocaleDateString('en-AU',{weekday:'short',day:'numeric',month:'short'})}${x.inspStart.getHours() ? ' ' + fmtTime(x.inspStart) : ''}</span>`
       : '<span style="color:var(--ink-2)">—</span>';
     const st = x.status || 'New';
-    return `<tr class="r-${st.toLowerCase()}">
-      <td class="addr"><a href="${x.url}" target="_blank" rel="noopener">${street}</a><br><span class="suburb">${rest.join(',').trim()}${x.note ? ' · <span style="color:var(--warn)">' + x.note + '</span>' : ''}</span></td>
+    return `<tr class="r-${st.toLowerCase()}${isGone(x) ? ' r-gone' : ''}">
+      <td class="addr"><a href="${x.url}" target="_blank" rel="noopener">${street}</a><br><span class="suburb">${rest.join(',').trim()}</span>${isGone(x) ? '<br><span class="gone-tag">' + (/sold/i.test((x.note||'') + (x.price||'')) && !/unless sold/i.test(x.price||'') ? 'Sold' : 'Under contract') + '</span>' : ''}</td>
       <td class="num">${x.priceNum ? '$' + x.priceNum.toLocaleString() : (x.price || '—')}</td>
       <td class="bbc"><b>${x.beds ?? '–'}</b> bd&nbsp; <b>${x.baths ?? '–'}</b> ba&nbsp; <b>${x.cars ?? '–'}</b> car</td>
       <td class="num">${x.landM2 ? x.landM2.toLocaleString() + ' m²' : '—'}</td>
@@ -357,7 +375,7 @@ function renderSchedule() {
   // Expand every slot of every non-Pass listing into individual stops
   const stops = [];
   data.map(enrich).forEach(x => {
-    if ((x.status || 'New') === 'Pass') return;
+    if ((x.status || 'New') === 'Pass' || isGone(x)) return;
     x.slots.forEach(s => stops.push({ ...x, inspStart: s.start, inspEnd: s.end, inspTs: s.start.getTime() }));
   });
   // Only show stops from 12h ago onward
@@ -405,7 +423,7 @@ function icsDate(d) {
 document.getElementById('exportIcs').onclick = () => {
   const events = [];
   data.map(enrich).forEach(x => {
-    if ((x.status || 'New') === 'Pass') return;
+    if ((x.status || 'New') === 'Pass' || isGone(x)) return;
     x.slots.forEach(s => {
       if (s.start.getHours() && s.start.getTime() > Date.now() - 12 * 36e5) events.push({ x, s });
     });
