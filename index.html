@@ -154,6 +154,11 @@
         <option>New</option><option>Shortlist</option><option>Inspect</option><option>Offer</option><option>Pass</option>
       </select>
       <select id="fSuburb"><option value="">All suburbs</option></select>
+      <select id="fGone">
+        <option value="">Sold/UC: show</option>
+        <option value="hide">Sold/UC: hide</option>
+        <option value="only">Sold/UC: only</option>
+      </select>
       <span class="spacer"></span>
       <button class="btn" id="exportJson">Export JSON</button>
     </div>
@@ -315,11 +320,13 @@ function renderTable() {
   const q = document.getElementById('q').value.toLowerCase();
   const fs = document.getElementById('fStatus').value;
   const fsub = document.getElementById('fSuburb').value;
+  const fg = document.getElementById('fGone').value;
 
   let rows = data.map(enrich).filter(x =>
     (!q || x.address.toLowerCase().includes(q)) &&
     (!fs || (x.status || 'New') === fs) &&
-    (!fsub || zoneOf(x) === fsub)
+    (!fsub || zoneOf(x) === fsub) &&
+    (fg === 'hide' ? !isGone(x) : fg === 'only' ? isGone(x) : true)
   );
 
   rows.sort((a, b) => {
@@ -507,7 +514,7 @@ document.querySelectorAll('th[data-sort]').forEach(th => th.onclick = () => {
   th.querySelector('.arrow').textContent = sortDir > 0 ? '▲' : '▼';
   renderTable();
 });
-['q','fStatus','fSuburb'].forEach(id => document.getElementById(id).oninput = renderTable);
+['q','fStatus','fSuburb','fGone'].forEach(id => document.getElementById(id).oninput = renderTable);
 
 /* ============ Boot ============ */
 function renderAll() {
