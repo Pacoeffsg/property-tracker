@@ -1,0 +1,2682 @@
+[
+  {
+    "id": "151134308",
+    "url": "https://www.realestate.com.au/property-house-nsw-hornsby-151134308",
+    "address": "26 Milner Avenue, Hornsby",
+    "price": "For sale $1,375,000 - $1,425,000",
+    "beds": 3,
+    "baths": 2,
+    "cars": 1,
+    "landM2": null,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T13:15:00+10:00",
+        "start": "2026-06-13T12:45:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151391356",
+    "url": "https://www.realestate.com.au/property-house-nsw-engadine-151391356",
+    "address": "865 Princes Highway, Engadine",
+    "price": "For Sale - Contact Agent",
+    "beds": 4,
+    "baths": 2,
+    "cars": 3,
+    "landM2": 834.7,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T11:30:00+10:00",
+        "start": "2026-06-13T11:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150620528",
+    "url": "https://www.realestate.com.au/property-house-nsw-south+wentworthville-150620528",
+    "address": "Inspection, , Tomorrow 10:20 am, , 4 The Point, South Wentworthville, , Add to plan",
+    "price": "",
+    "beds": null,
+    "baths": null,
+    "cars": null,
+    "landM2": null,
+    "type": null,
+    "inspections": [
+      {
+        "end": "2026-06-13T10:50:00+10:00",
+        "start": "2026-06-13T10:20:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151205424",
+    "url": "https://www.realestate.com.au/property-house-nsw-parklea-151205424",
+    "address": "60 Damien Drive, Parklea",
+    "price": "FOR SALE Guide $1,300,000 - $1,340,000",
+    "beds": 3,
+    "baths": 3,
+    "cars": 2,
+    "landM2": null,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T11:45:00+10:00",
+        "start": "2026-06-13T11:15:00+10:00"
+      },
+      {
+        "end": "2026-06-13T15:30:00+10:00",
+        "start": "2026-06-13T15:00:00+10:00"
+      },
+      {
+        "end": "2026-06-14T12:15:00+10:00",
+        "start": "2026-06-14T11:45:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150694580",
+    "url": "https://www.realestate.com.au/property-house-nsw-bella+vista-150694580",
+    "address": "12 Patrine Place, Bella Vista",
+    "price": "Price guide $1,390,000",
+    "beds": 3,
+    "baths": 2,
+    "cars": 1,
+    "landM2": null,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T11:30:00+10:00",
+        "start": "2026-06-13T11:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151295960",
+    "url": "https://www.realestate.com.au/property-house-nsw-greystanes-151295960",
+    "address": "98 Gardenia Parade, Greystanes",
+    "price": "PRICE GUIDE $1,350,000",
+    "beds": 3,
+    "baths": 2,
+    "cars": 1,
+    "landM2": 562.8,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T13:45:00+10:00",
+        "start": "2026-06-13T13:15:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151284324",
+    "url": "https://www.realestate.com.au/property-house-nsw-stanhope+gardens-151284324",
+    "address": "22 Winslow Avenue, Stanhope Gardens",
+    "price": "For Sale $1,330,000 - $1,380,000",
+    "beds": 3,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 390,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T13:20:00+10:00",
+        "start": "2026-06-13T13:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151333224",
+    "url": "https://www.realestate.com.au/property-duplex+semi-detached-nsw-roselands-151333224",
+    "address": "34 Remly Street, Roselands",
+    "price": "Under Contract",
+    "beds": 3,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 389.9,
+    "type": "Duplex/semi-detached",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "note": "Under contract",
+    "status": "New"
+  },
+  {
+    "id": "151375148",
+    "url": "https://www.realestate.com.au/property-house-nsw-narwee-151375148",
+    "address": "74 Grove Avenue, Narwee",
+    "price": "Auction Unless Sold Prior",
+    "beds": 3,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 442.6,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T12:30:00+10:00",
+        "start": "2026-06-13T12:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150809580",
+    "url": "https://www.realestate.com.au/property-house-nsw-grays+point-150809580",
+    "address": "Inspection, , Tomorrow 10:00 am, , 195 North West Arm Road, Grays Point, , Add to plan",
+    "price": "",
+    "beds": null,
+    "baths": null,
+    "cars": null,
+    "landM2": null,
+    "type": null,
+    "inspections": [
+      {
+        "end": "2026-06-13T10:30:00+10:00",
+        "start": "2026-06-13T10:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Under contract"
+  },
+  {
+    "id": "151446436",
+    "url": "https://www.realestate.com.au/property-house-nsw-engadine-151446436",
+    "address": "2/35 Morrison Avenue, Engadine",
+    "price": "Guide $1,400,000 - $1,500,000",
+    "beds": 3,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 305,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T11:30:00+10:00",
+        "start": "2026-06-13T11:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151446612",
+    "url": "https://www.realestate.com.au/property-house-nsw-gymea-151446612",
+    "address": "Inspection, , Tomorrow 9:00 am, , 350 President Avenue, Gymea, , Add to plan",
+    "price": "",
+    "beds": null,
+    "baths": null,
+    "cars": null,
+    "landM2": null,
+    "type": null,
+    "inspections": [
+      {
+        "end": "2026-06-13T09:30:00+10:00",
+        "start": "2026-06-13T09:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151449236",
+    "url": "https://www.realestate.com.au/property-house-nsw-engadine-151449236",
+    "address": "Inspection, , Tomorrow 9:30 am, , 28B Engadine Avenue, Engadine, , Add to plan",
+    "price": "",
+    "beds": null,
+    "baths": null,
+    "cars": null,
+    "landM2": null,
+    "type": null,
+    "inspections": [
+      {
+        "end": "2026-06-13T10:00:00+10:00",
+        "start": "2026-06-13T09:30:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151367560",
+    "url": "https://www.realestate.com.au/property-house-nsw-bangor-151367560",
+    "address": "Inspection, , Tomorrow 9:30 am, , 26 Bandalong Crescent, Bangor, , Add to plan",
+    "price": "",
+    "beds": null,
+    "baths": null,
+    "cars": null,
+    "landM2": null,
+    "type": null,
+    "inspections": [
+      {
+        "end": "2026-06-13T10:00:00+10:00",
+        "start": "2026-06-13T09:30:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151088244",
+    "url": "https://www.realestate.com.au/property-house-nsw-menai-151088244",
+    "address": "Inspection, , Tomorrow 10:30 am, , 1A Davis Place, Menai, , Add to plan",
+    "price": "",
+    "beds": null,
+    "baths": null,
+    "cars": null,
+    "landM2": null,
+    "type": null,
+    "inspections": [
+      {
+        "end": "2026-06-13T11:00:00+10:00",
+        "start": "2026-06-13T10:30:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151239644",
+    "url": "https://www.realestate.com.au/property-house-nsw-kellyville+ridge-151239644",
+    "address": "48 Tullaroan Street, Kellyville Ridge",
+    "price": "Price Guide | $1,450,000 - $1,500,000",
+    "beds": 4,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 450,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T14:45:00+10:00",
+        "start": "2026-06-13T14:15:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150539688",
+    "url": "https://www.realestate.com.au/property-house-nsw-glenwood-150539688",
+    "address": "Inspection, , Tomorrow 10:00 am, , 15 Grech Place, Glenwood, , Add to plan",
+    "price": "",
+    "beds": null,
+    "baths": null,
+    "cars": null,
+    "landM2": null,
+    "type": null,
+    "inspections": [
+      {
+        "end": "2026-06-13T10:30:00+10:00",
+        "start": "2026-06-13T10:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151094996",
+    "url": "https://www.realestate.com.au/property-house-nsw-merrylands-151094996",
+    "address": "71 Desmond Street, Merrylands",
+    "price": "Price Guide $1,400,000 - $1,500,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 1,
+    "landM2": 606.9,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T11:30:00+10:00",
+        "start": "2026-06-13T11:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151366840",
+    "url": "https://www.realestate.com.au/property-house-nsw-engadine-151366840",
+    "address": "3 Bombell Avenue, Engadine",
+    "price": "Guide $1,500,000",
+    "beds": 4,
+    "baths": 1,
+    "cars": 2,
+    "landM2": 619,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T11:30:00+10:00",
+        "start": "2026-06-13T11:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151044960",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-kareela-151044960",
+    "address": "1 Bulimba Avenue, Kareela",
+    "price": "Contact agent",
+    "beds": 3,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 556,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "151118220",
+    "url": "https://www.realestate.com.au/property-house-nsw-kirrawee-151118220",
+    "address": "128 Acacia Road, Kirrawee",
+    "price": "Price $1,400,000 | INSPECT BY APPOINTMENT",
+    "beds": 4,
+    "baths": 2,
+    "cars": 4,
+    "landM2": 627,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151297004",
+    "url": "https://www.realestate.com.au/property-house-nsw-padstow+heights-151297004",
+    "address": "72 Valley Road, Padstow Heights",
+    "price": "Guide $1,400,000",
+    "beds": 4,
+    "baths": 3,
+    "cars": 2,
+    "landM2": 556,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T12:45:00+10:00",
+        "start": "2026-06-13T12:15:00+10:00"
+      },
+      {
+        "end": "2026-06-16T17:25:00+10:00",
+        "start": "2026-06-16T17:00:00+10:00"
+      },
+      {
+        "end": "2026-06-20T15:45:00+10:00",
+        "start": "2026-06-20T15:15:00+10:00"
+      }
+    ],
+    "auction": {
+      "__typename": "AuctionTime",
+      "display": {
+        "__typename": "AuctionTimeDisplay",
+        "longLabel": "Sat 20 Jun at 3:45 pm"
+      },
+      "value": "2026-06-20T15:45:00+10:00"
+    },
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151383988",
+    "url": "https://www.realestate.com.au/property-house-nsw-engadine-151383988",
+    "address": "Inspection, , Tomorrow 10:00 am, , 1 Palona Crescent, Engadine, , Add to plan",
+    "price": "",
+    "beds": null,
+    "baths": null,
+    "cars": null,
+    "landM2": null,
+    "type": null,
+    "inspections": [
+      {
+        "end": "2026-06-13T10:30:00+10:00",
+        "start": "2026-06-13T10:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151361452",
+    "url": "https://www.realestate.com.au/property-house-nsw-east+hills-151361452",
+    "address": "Inspection, , Tomorrow 9:30 am, , 5 Matthews Avenue, East Hills, , Add to plan",
+    "price": "",
+    "beds": null,
+    "baths": null,
+    "cars": null,
+    "landM2": null,
+    "type": null,
+    "inspections": [
+      {
+        "end": "2026-06-13T10:00:00+10:00",
+        "start": "2026-06-13T09:30:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151319928",
+    "url": "https://www.realestate.com.au/property-house-nsw-greystanes-151319928",
+    "address": "Inspection, , Tomorrow 10:00 am, , 19 Greystanes Road, Greystanes, , Add to plan",
+    "price": "",
+    "beds": null,
+    "baths": null,
+    "cars": null,
+    "landM2": null,
+    "type": null,
+    "inspections": [
+      {
+        "end": "2026-06-13T10:30:00+10:00",
+        "start": "2026-06-13T10:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151214976",
+    "url": "https://www.realestate.com.au/property-duplex+semi-detached-nsw-belmore-151214976",
+    "address": "Inspection, , Tomorrow 10:00 am, , 44 Knox Street, Belmore, , Add to plan",
+    "price": "",
+    "beds": null,
+    "baths": null,
+    "cars": null,
+    "landM2": null,
+    "type": null,
+    "inspections": [
+      {
+        "end": "2026-06-13T10:30:00+10:00",
+        "start": "2026-06-13T10:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150786604",
+    "url": "https://www.realestate.com.au/property-house-nsw-acacia+gardens-150786604",
+    "address": "13 Corinne Street, Acacia Gardens",
+    "price": "PRICE GUIDE | $1,280,000 - $1,330,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 2,
+    "landM2": 657.6,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T10:50:00+10:00",
+        "start": "2026-06-13T10:30:00+10:00"
+      },
+      {
+        "end": "2026-06-14T11:00:00+10:00",
+        "start": "2026-06-14T10:40:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150524428",
+    "url": "https://www.realestate.com.au/property-house-nsw-seven+hills-150524428",
+    "address": "60 Jean Street, Seven Hills",
+    "price": "Price Guide $1,180,000 - $1,240,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 2,
+    "landM2": 562.8,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T15:15:00+10:00",
+        "start": "2026-06-13T14:45:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151176376",
+    "url": "https://www.realestate.com.au/property-house-nsw-greystanes-151176376",
+    "address": "6 Bambil Street, Greystanes",
+    "price": "$1,300,000 - $1,350,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 1,
+    "landM2": 556.4,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T11:30:00+10:00",
+        "start": "2026-06-13T11:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151217276",
+    "url": "https://www.realestate.com.au/property-house-nsw-blacktown-151217276",
+    "address": "217 Vardys Road, Blacktown",
+    "price": "Price Guide: $1,150,000 - $1,180,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 3,
+    "landM2": 822.2,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151117008",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-menai-151117008",
+    "address": "72 Rosewall Drive, Menai",
+    "price": "$1,400,000",
+    "beds": 4,
+    "baths": 1,
+    "cars": 1,
+    "landM2": 866.7,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150558632",
+    "url": "https://www.realestate.com.au/property-house-nsw-glenwood-150558632",
+    "address": "39 Crestview Drive, Glenwood",
+    "price": "FOR SALE",
+    "beds": 3,
+    "baths": 2,
+    "cars": 2,
+    "landM2": null,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150913780",
+    "url": "https://www.realestate.com.au/property-house-nsw-acacia+gardens-150913780",
+    "address": "4 Gannet Place, Acacia Gardens",
+    "price": "FOR SALE",
+    "beds": 4,
+    "baths": 3,
+    "cars": 2,
+    "landM2": 600,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151043208",
+    "url": "https://www.realestate.com.au/property-house-nsw-padstow-151043208",
+    "address": "33 Ronald Street, Padstow",
+    "price": "Under Contract",
+    "beds": 3,
+    "baths": 1,
+    "cars": 1,
+    "landM2": 392.8,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "note": "Under contract",
+    "status": "New"
+  },
+  {
+    "id": "151031376",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-engadine-151031376",
+    "address": "30 Lantana Road, Engadine",
+    "price": "Contact agent",
+    "beds": 3,
+    "baths": 1,
+    "cars": 2,
+    "landM2": 573,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "151334836",
+    "url": "https://www.realestate.com.au/property-house-nsw-toongabbie-151334836",
+    "address": "63 Valparaiso Avenue, Toongabbie",
+    "price": "",
+    "beds": 3,
+    "baths": 3,
+    "cars": 2,
+    "landM2": 566,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "note": "Under contract",
+    "status": "New"
+  },
+  {
+    "id": "151020344",
+    "url": "https://www.realestate.com.au/property-house-nsw-greystanes-151020344",
+    "address": "30 Dawn Street, Greystanes",
+    "price": "Price Guide $1,400,000 - $1,470,000",
+    "beds": 3,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 629.6,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Under contract"
+  },
+  {
+    "id": "151049896",
+    "url": "https://www.realestate.com.au/property-house-nsw-greystanes-151049896",
+    "address": "35 Macleay Street, Greystanes",
+    "price": "Under Contract",
+    "beds": 4,
+    "baths": 2,
+    "cars": 1,
+    "landM2": 569.1,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "note": "Under contract",
+    "status": "New"
+  },
+  {
+    "id": "150882704",
+    "url": "https://www.realestate.com.au/property-house-nsw-westmead-150882704",
+    "address": "12 Booth Street, Westmead",
+    "price": "$1,400,000 - $1,540,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 2,
+    "landM2": 428,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T14:30:00+10:00",
+        "start": "2026-06-13T14:00:00+10:00"
+      },
+      {
+        "end": "2026-06-14T12:50:00+10:00",
+        "start": "2026-06-14T12:30:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151099792",
+    "url": "https://www.realestate.com.au/property-house-nsw-stanhope+gardens-151099792",
+    "address": "49 Kentwell Crescent, Stanhope Gardens",
+    "price": "Guide | $1,300,000 - $1,350,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 1,
+    "landM2": 650,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T13:50:00+10:00",
+        "start": "2026-06-13T13:30:00+10:00"
+      },
+      {
+        "end": "2026-06-14T10:20:00+10:00",
+        "start": "2026-06-14T10:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Under contract"
+  },
+  {
+    "id": "150978204",
+    "url": "https://www.realestate.com.au/property-house-nsw-kellyville+ridge-150978204",
+    "address": "19 Singleton Avenue, Kellyville Ridge",
+    "price": "$1,400,000 - $1,450,000",
+    "beds": 3,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 460,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T11:30:00+10:00",
+        "start": "2026-06-13T11:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151148744",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-south+wentworthville-151148744",
+    "address": "8 Lucerne Avenue, South Wentworthville",
+    "price": "$1,080,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 1,
+    "landM2": 556.4,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150977640",
+    "url": "https://www.realestate.com.au/property-house-nsw-seven+hills-150977640",
+    "address": "331 Seven Hills Road, Seven Hills",
+    "price": "Price Guide | $1,300,000 - $1,400,000",
+    "beds": 4,
+    "baths": 3,
+    "cars": 2,
+    "landM2": 557,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T11:30:00+10:00",
+        "start": "2026-06-13T11:00:00+10:00"
+      },
+      {
+        "end": "2026-06-20T11:30:00+10:00",
+        "start": "2026-06-20T11:00:00+10:00"
+      },
+      {
+        "end": "2026-06-27T11:30:00+10:00",
+        "start": "2026-06-27T11:00:00+10:00"
+      },
+      {
+        "end": "2026-07-04T11:30:00+10:00",
+        "start": "2026-07-04T11:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Under contract"
+  },
+  {
+    "id": "151103456",
+    "url": "https://www.realestate.com.au/property-house-nsw-merrylands-151103456",
+    "address": "21 Yoogali Street, Merrylands",
+    "price": "Under Contract By Jaiden Spencer",
+    "beds": 3,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 556.4,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "note": "Under contract",
+    "status": "New"
+  },
+  {
+    "id": "150884496",
+    "url": "https://www.realestate.com.au/property-house-nsw-seven+hills-150884496",
+    "address": "15 Zambesi Road, Seven Hills",
+    "price": "Price Guide $1,280,000 - $1,350,000",
+    "beds": 3,
+    "baths": 2,
+    "cars": 4,
+    "landM2": null,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T12:30:00+10:00",
+        "start": "2026-06-13T12:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150772836",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-parklea-150772836",
+    "address": "17 Parklea Drive, Parklea",
+    "price": "$1,365,000",
+    "beds": 4,
+    "baths": 2,
+    "cars": 3,
+    "landM2": 396,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150802248",
+    "url": "https://www.realestate.com.au/property-house-nsw-roselands-150802248",
+    "address": "227 Moorefields Road, Roselands",
+    "price": "AUCTION | GUIDE: $1,250,000",
+    "beds": 4,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 450,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T12:00:00+10:00",
+        "start": "2026-06-13T11:30:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150822880",
+    "url": "https://www.realestate.com.au/property-house-nsw-winston+hills-150822880",
+    "address": "Inspection, , Tomorrow 10:00 am, , 15 Lachlan Drive, Winston Hills, , Add to plan",
+    "price": "",
+    "beds": null,
+    "baths": null,
+    "cars": null,
+    "landM2": null,
+    "type": null,
+    "inspections": [
+      {
+        "end": "2026-06-13T10:30:00+10:00",
+        "start": "2026-06-13T10:00:00+10:00"
+      },
+      {
+        "end": "2026-06-13T14:00:00+10:00",
+        "start": "2026-06-13T13:30:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151018856",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-revesby-151018856",
+    "address": "48 Tompson Road, Revesby",
+    "price": "Contact agent",
+    "beds": 4,
+    "baths": 1,
+    "cars": 2,
+    "landM2": 581,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "151172112",
+    "url": "https://www.realestate.com.au/property-house-nsw-picnic+point-151172112",
+    "address": "24 Thomas Street, Picnic Point",
+    "price": "$1,480,000 - $1,550,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 3,
+    "landM2": 632,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T14:15:00+10:00",
+        "start": "2026-06-13T13:45:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151022924",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-gymea-151022924",
+    "address": "816 Kingsway, Gymea",
+    "price": "$1,430,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 1,
+    "landM2": 562,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150863068",
+    "url": "https://www.realestate.com.au/property-house-nsw-greystanes-150863068",
+    "address": "16 Daffodil Street, Greystanes",
+    "price": "PRICE GUIDE $1,450,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 2,
+    "landM2": 557,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T11:15:00+10:00",
+        "start": "2026-06-13T10:45:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150674968",
+    "url": "https://www.realestate.com.au/property-house-nsw-bexley+north-150674968",
+    "address": "336 Bexley Road, Bexley North",
+    "price": "Price Guide: $1,390,000 to $1,490,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 2,
+    "landM2": null,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T14:15:00+10:00",
+        "start": "2026-06-13T13:45:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151184324",
+    "url": "https://www.realestate.com.au/property-house-nsw-bonnet+bay-151184324",
+    "address": "31 Lower Washington Drive, Bonnet Bay",
+    "price": "For Sale",
+    "beds": 3,
+    "baths": 1,
+    "cars": 1,
+    "landM2": 651,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Under contract"
+  },
+  {
+    "id": "151021352",
+    "url": "https://www.realestate.com.au/property-house-nsw-constitution+hill-151021352",
+    "address": "Inspection, , Tomorrow 10:00 am, , 31 Austin Crescent, Constitution Hill, , Add to plan",
+    "price": "",
+    "beds": null,
+    "baths": null,
+    "cars": null,
+    "landM2": null,
+    "type": null,
+    "inspections": [
+      {
+        "end": "2026-06-13T10:30:00+10:00",
+        "start": "2026-06-13T10:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150896804",
+    "url": "https://www.realestate.com.au/property-house-nsw-blacktown-150896804",
+    "address": "49 Keyworth Drive, Blacktown",
+    "price": "FOR SALE| $1,200,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 2,
+    "landM2": 556.4,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T11:40:00+10:00",
+        "start": "2026-06-13T11:20:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150970832",
+    "url": "https://www.realestate.com.au/property-house-nsw-riverstone-150970832",
+    "address": "9 Piccadilly Street, Riverstone",
+    "price": "Guide $1,350,000-$1,450,000",
+    "beds": 4,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 438,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Under contract"
+  },
+  {
+    "id": "150997900",
+    "url": "https://www.realestate.com.au/property-house-nsw-schofields-150997900",
+    "address": "12 Simon Street (Tallawong), Schofields",
+    "price": "FOR SALE $1,400,000 - $1,470,000",
+    "beds": 5,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 373,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T13:00:00+10:00",
+        "start": "2026-06-13T12:30:00+10:00"
+      },
+      {
+        "end": "2026-06-14T12:30:00+10:00",
+        "start": "2026-06-14T12:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151054928",
+    "url": "https://www.realestate.com.au/sold/property-villa-nsw-sutherland-151054928",
+    "address": "1/72 Belmont Street, Sutherland",
+    "price": "$1,420,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 1,
+    "landM2": null,
+    "type": "Villa",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "151058772",
+    "url": "https://www.realestate.com.au/property-house-nsw-mount+colah-151058772",
+    "address": "16 Greenmount Way, Mount Colah",
+    "price": "$1,350,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 3,
+    "landM2": null,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T14:00:00+10:00",
+        "start": "2026-06-13T13:30:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151074868",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-riverstone-151074868",
+    "address": "55 Castlereagh Street, Riverstone",
+    "price": "$1,460,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 1,
+    "landM2": 1012,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "151180760",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-riverstone-151180760",
+    "address": "6 Coe Place, Riverstone",
+    "price": "$1,080,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 2,
+    "landM2": null,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "151111984",
+    "url": "https://www.realestate.com.au/property-house-nsw-kings+park-151111984",
+    "address": "262 Madagascar Drive, Kings Park",
+    "price": "",
+    "beds": 3,
+    "baths": 1,
+    "cars": 2,
+    "landM2": 711,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "note": "Under contract",
+    "status": "New"
+  },
+  {
+    "id": "151163980",
+    "url": "https://www.realestate.com.au/property-house-nsw-erskine+park-151163980",
+    "address": "82 Chameleon Drive, Erskine Park",
+    "price": "Price guide $1,300,000 - Great Family Home",
+    "beds": 4,
+    "baths": 2,
+    "cars": 4,
+    "landM2": 610,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T11:00:00+10:00",
+        "start": "2026-06-13T10:30:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Under contract"
+  },
+  {
+    "id": "150254356",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-earlwood-150254356",
+    "address": "94 Wolli Avenue, Earlwood",
+    "price": "Contact agent",
+    "beds": 3,
+    "baths": 1,
+    "cars": 3,
+    "landM2": 520,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150842576",
+    "url": "https://www.realestate.com.au/property-house-nsw-engadine-150842576",
+    "address": "49 Dobell Road, Engadine",
+    "price": "Guide $1,300,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 2,
+    "landM2": 640,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150814728",
+    "url": "https://www.realestate.com.au/property-house-nsw-quakers+hill-150814728",
+    "address": "112 Kennington Avenue, Quakers Hill",
+    "price": "$1,350,000 - $1,390,000",
+    "beds": 4,
+    "baths": 1,
+    "cars": 2,
+    "landM2": 599,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-14T10:30:00+10:00",
+        "start": "2026-06-14T10:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150827336",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-the+ponds-150827336",
+    "address": "58 Katoomba Street, The Ponds",
+    "price": "$1,355,000",
+    "beds": 4,
+    "baths": 2,
+    "cars": 1,
+    "landM2": 250,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150928296",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-prospect-150928296",
+    "address": "20 Dinton Street, Prospect",
+    "price": "$1,262,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 2,
+    "landM2": 574.5,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "151000196",
+    "url": "https://www.realestate.com.au/property-house-nsw-greystanes-151000196",
+    "address": "13 Gipps Road, Greystanes",
+    "price": "Under Contract",
+    "beds": 3,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 575.4,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "note": "Under contract",
+    "status": "New"
+  },
+  {
+    "id": "150805192",
+    "url": "https://www.realestate.com.au/property-house-nsw-ashfield-150805192",
+    "address": "53 Milton Street, Ashfield",
+    "price": "For Sale - $1,350,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 1,
+    "landM2": 240,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T11:30:00+10:00",
+        "start": "2026-06-13T11:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Under contract"
+  },
+  {
+    "id": "151026344",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-engadine-151026344",
+    "address": "22 Glenview Place, Engadine",
+    "price": "$1,461,000",
+    "beds": 4,
+    "baths": 1,
+    "cars": 3,
+    "landM2": 594.38,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "151026940",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-merrylands-151026940",
+    "address": "30 Yoogali Street, Merrylands",
+    "price": "Contact agent",
+    "beds": 3,
+    "baths": 1,
+    "cars": 1,
+    "landM2": 562.8,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150884056",
+    "url": "https://www.realestate.com.au/property-house-nsw-kellyville+ridge-150884056",
+    "address": "5 Farrier Way, Kellyville Ridge",
+    "price": "$1.3M Guide | Owners Bought Elsewhere | Must Sell!",
+    "beds": 5,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 562.1,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T11:30:00+10:00",
+        "start": "2026-06-13T11:00:00+10:00"
+      },
+      {
+        "end": "2026-06-14T11:30:00+10:00",
+        "start": "2026-06-14T11:00:00+10:00"
+      }
+    ],
+    "auction": {
+      "__typename": "AuctionTime",
+      "display": {
+        "__typename": "AuctionTimeDisplay",
+        "longLabel": "Sat 20 Jun at 11:30 am"
+      },
+      "value": "2026-06-20T11:30:00+10:00"
+    },
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151054588",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-kellyville+ridge-151054588",
+    "address": "14 Glide Place, Kellyville Ridge",
+    "price": "$1,350,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 1,
+    "landM2": null,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150916896",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-stanhope+gardens-150916896",
+    "address": "51 Kentwell Crescent, Stanhope Gardens",
+    "price": "$1,300,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 1,
+    "landM2": null,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "151025760",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-stanhope+gardens-151025760",
+    "address": "31 Rochdale Circuit, Stanhope Gardens",
+    "price": "Contact agent",
+    "beds": 3,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 411.4,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150902352",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-kellyville+ridge-150902352",
+    "address": "7 Marlow Place, Kellyville Ridge",
+    "price": "$1,440,000",
+    "beds": 4,
+    "baths": 3,
+    "cars": 2,
+    "landM2": 417,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150897636",
+    "url": "https://www.realestate.com.au/property-house-nsw-engadine-150897636",
+    "address": "21 Lalor Crescent, Engadine",
+    "price": "Guide $1,300,000 - $1,430,000",
+    "beds": 4,
+    "baths": 1,
+    "cars": 2,
+    "landM2": 556.44,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T12:15:00+10:00",
+        "start": "2026-06-13T11:45:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Under contract"
+  },
+  {
+    "id": "150509132",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-seven+hills-150509132",
+    "address": "14 Federal Road, Seven Hills",
+    "price": "Contact agent",
+    "beds": 3,
+    "baths": 1,
+    "cars": 3,
+    "landM2": 664,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150416204",
+    "url": "https://www.realestate.com.au/property-house-nsw-blacktown-150416204",
+    "address": "65 Lock Street, Blacktown",
+    "price": "$1,280,000 - $1,330,000",
+    "beds": 4,
+    "baths": 2,
+    "cars": 3,
+    "landM2": 556,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150442152",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-blacktown-150442152",
+    "address": "3 Andre Place, Blacktown",
+    "price": "$1,300,000",
+    "beds": 4,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 496,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "151044856",
+    "url": "https://www.realestate.com.au/property-house-nsw-greystanes-151044856",
+    "address": "185 Dawn Street, Greystanes",
+    "price": "$1,475,000 - DREAM START IN CUL DE SAC ON 626SQM!",
+    "beds": 4,
+    "baths": 2,
+    "cars": 3,
+    "landM2": 626,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T13:00:00+10:00",
+        "start": "2026-06-13T12:30:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Under contract"
+  },
+  {
+    "id": "150664380",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-greystanes-150664380",
+    "address": "30 Tulip Street, Greystanes",
+    "price": "$1,450,000",
+    "beds": 5,
+    "baths": 2,
+    "cars": 1,
+    "landM2": 556.4,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150797776",
+    "url": "https://www.realestate.com.au/property-house-nsw-greystanes-150797776",
+    "address": "27 Sapphire Street, Greystanes",
+    "price": "Price Guide | $1,450,000 - $1,550,000",
+    "beds": 4,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 562.8,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T11:30:00+10:00",
+        "start": "2026-06-13T11:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "149304692",
+    "url": "https://www.realestate.com.au/property-house-nsw-ermington-149304692",
+    "address": "Inspection, , Tomorrow 10:15 am, , 4 Batten Crescent, Ermington, , Add to plan",
+    "price": "",
+    "beds": null,
+    "baths": null,
+    "cars": null,
+    "landM2": null,
+    "type": null,
+    "inspections": [
+      {
+        "end": "2026-06-13T10:45:00+10:00",
+        "start": "2026-06-13T10:15:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150615524",
+    "url": "https://www.realestate.com.au/property-duplex+semi-detached-nsw-arncliffe-150615524",
+    "address": "11 Dowling Street, Arncliffe",
+    "price": "FOR SALE | $1,499,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 2,
+    "landM2": 341,
+    "type": "Duplex/semi-detached",
+    "inspections": [
+      {
+        "end": "2026-06-13T11:45:00+10:00",
+        "start": "2026-06-13T11:15:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "151024084",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-engadine-151024084",
+    "address": "25 Nelson Street, Engadine",
+    "price": "$1,480,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 3,
+    "landM2": 676.02,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "151017892",
+    "url": "https://www.realestate.com.au/property-house-nsw-engadine-151017892",
+    "address": "102a Cooriengah Heights Road, Engadine",
+    "price": "Under Contract",
+    "beds": 3,
+    "baths": 1,
+    "cars": 2,
+    "landM2": 458,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "note": "Under contract",
+    "status": "New"
+  },
+  {
+    "id": "150880072",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-lugarno-150880072",
+    "address": "64 Elm Street, Lugarno",
+    "price": "Contact agent",
+    "beds": 4,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 644,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150861512",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-jannali-150861512",
+    "address": "151 Novara Crescent, Jannali",
+    "price": "$1,550,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 1,
+    "landM2": 588.1,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150833784",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-normanhurst-150833784",
+    "address": "2/41 Stuart Avenue, Normanhurst",
+    "price": "$1,415,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 1,
+    "landM2": 294,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150897972",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-arncliffe-150897972",
+    "address": "32 Hirst Street, Arncliffe",
+    "price": "$1,350,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 1,
+    "landM2": 392,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150894100",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-oyster+bay-150894100",
+    "address": "39 Caravan Head Road, Oyster Bay",
+    "price": "Contact agent",
+    "beds": 4,
+    "baths": 1,
+    "cars": 1,
+    "landM2": 1088,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150758708",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-kareela-150758708",
+    "address": "18 Ulladulla Place, Kareela",
+    "price": "Contact agent",
+    "beds": 3,
+    "baths": 3,
+    "cars": 2,
+    "landM2": 707,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150683256",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-riverwood-150683256",
+    "address": "23 Fullerton Crescent, Riverwood",
+    "price": "$1,430,000",
+    "beds": 3,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 860,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150553684",
+    "url": "https://www.realestate.com.au/sold/property-villa-nsw-jannali-150553684",
+    "address": "5/85-87 Jannali Avenue, Jannali",
+    "price": "Contact agent",
+    "beds": 2,
+    "baths": 1,
+    "cars": 1,
+    "landM2": 180,
+    "type": "Villa",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150539732",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-kellyville+ridge-150539732",
+    "address": "11 Iezza Place, Kellyville Ridge",
+    "price": "$1,450,000",
+    "beds": 4,
+    "baths": 2,
+    "cars": 2,
+    "landM2": null,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150423520",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-revesby-150423520",
+    "address": "153 The River Road, Revesby",
+    "price": "Contact agent",
+    "beds": 3,
+    "baths": 1,
+    "cars": 2,
+    "landM2": 644.96,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150854024",
+    "url": "https://www.realestate.com.au/property-house-nsw-blakehurst-150854024",
+    "address": "241 West Street, Blakehurst",
+    "price": "FOR SALE GUIDE | $1,350,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 2,
+    "landM2": 335,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T15:30:00+10:00",
+        "start": "2026-06-13T15:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150556848",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-beaumont+hills-150556848",
+    "address": "15 Redgum Crescent, Beaumont Hills",
+    "price": "Contact agent",
+    "beds": 4,
+    "baths": 1,
+    "cars": 1,
+    "landM2": 401,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150641488",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-glenwood-150641488",
+    "address": "9 Alwyn Crescent, Glenwood",
+    "price": "$1,525,000",
+    "beds": 4,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 530,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150613960",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-padstow-150613960",
+    "address": "31 Segers Avenue, Padstow",
+    "price": "$1,465,000",
+    "beds": 3,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 828,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150356936",
+    "url": "https://www.realestate.com.au/property-house-nsw-padstow-150356936",
+    "address": "166 Alma Road, Padstow",
+    "price": "Under Contract",
+    "beds": 3,
+    "baths": 3,
+    "cars": 1,
+    "landM2": 613,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "note": "Under contract",
+    "status": "New"
+  },
+  {
+    "id": "150345312",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-woronora+heights-150345312",
+    "address": "18 Spoonbill Avenue, Woronora Heights",
+    "price": "Contact agent",
+    "beds": 5,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 659,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150169888",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-gymea-150169888",
+    "address": "832 Kingsway, Gymea",
+    "price": "$1,510,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 3,
+    "landM2": 569,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150861784",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-blacktown-150861784",
+    "address": "42 Kent Street, Blacktown",
+    "price": "$1,225,000",
+    "beds": 3,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 665,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150556092",
+    "url": "https://www.realestate.com.au/property-house-nsw-grays+point-150556092",
+    "address": "126 North West Arm Road, Grays Point",
+    "price": "For Sale | $1,200,000 - $1,300,000",
+    "beds": 4,
+    "baths": 1,
+    "cars": 2,
+    "landM2": 569,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T12:30:00+10:00",
+        "start": "2026-06-13T12:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150772592",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-barden+ridge-150772592",
+    "address": "2 Mosman Place, Barden Ridge",
+    "price": "$1,350,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 1,
+    "landM2": 456.6,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150601864",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-greystanes-150601864",
+    "address": "255 Old Prospect Road, Greystanes",
+    "price": "$1,250,000",
+    "beds": 2,
+    "baths": 1,
+    "cars": 1,
+    "landM2": null,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150886888",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-blacktown-150886888",
+    "address": "81 Doonside Crescent, Blacktown",
+    "price": "$1,190,000",
+    "beds": 4,
+    "baths": 1,
+    "cars": 2,
+    "landM2": 714.5,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150803228",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-blacktown-150803228",
+    "address": "32 Hilltop Avenue, Blacktown",
+    "price": "$1,060,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 3,
+    "landM2": 556.4,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150777260",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-seven+hills-150777260",
+    "address": "35 Orana Avenue, Seven Hills",
+    "price": "$1,350,000",
+    "beds": 3,
+    "baths": 2,
+    "cars": 10,
+    "landM2": 692,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150857196",
+    "url": "https://www.realestate.com.au/property-house-nsw-old+toongabbie-150857196",
+    "address": "263 Old Windsor Road, Old Toongabbie",
+    "price": "Guide $1,150,000",
+    "beds": 3,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 402,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T15:30:00+10:00",
+        "start": "2026-06-13T15:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Under contract"
+  },
+  {
+    "id": "150429240",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-lalor+park-150429240",
+    "address": "200 Frederick Street, Lalor Park",
+    "price": "$1,120,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 2,
+    "landM2": 569.1,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150535244",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-moorebank-150535244",
+    "address": "26 Hennessey Avenue, Moorebank",
+    "price": "$1,235,000",
+    "beds": 4,
+    "baths": 3,
+    "cars": 1,
+    "landM2": 314,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150514100",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-padstow+heights-150514100",
+    "address": "14 Bastille Close, Padstow Heights",
+    "price": "$1,828,000",
+    "beds": 4,
+    "baths": 3,
+    "cars": 2,
+    "landM2": 556,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150417516",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-illawong-150417516",
+    "address": "99-101 Bignell Street, Illawong",
+    "price": "$2,460,000",
+    "beds": 5,
+    "baths": 3,
+    "cars": 2,
+    "landM2": 619,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150805032",
+    "url": "https://www.realestate.com.au/property-house-nsw-peakhurst+heights-150805032",
+    "address": "9 Waterside Parade, Peakhurst Heights",
+    "price": "For Sale | Price Guide: $1,950,000 - $2,100,000",
+    "beds": 5,
+    "baths": 3,
+    "cars": 4,
+    "landM2": 556,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T14:45:00+10:00",
+        "start": "2026-06-13T14:15:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150537012",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-riverstone-150537012",
+    "address": "7 Ryan Crescent, Riverstone",
+    "price": "$1,180,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 3,
+    "landM2": 558,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150809588",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-hoxton+park-150809588",
+    "address": "12 Tamworth Crescent, Hoxton Park",
+    "price": "$1,180,000",
+    "beds": 4,
+    "baths": 2,
+    "cars": 3,
+    "landM2": 498,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150824896",
+    "url": "https://www.realestate.com.au/property-house-nsw-glenmore+park-150824896",
+    "address": "44 Midin Close, Glenmore Park",
+    "price": "Buyers Guide - $999,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 1,
+    "landM2": 445,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T12:30:00+10:00",
+        "start": "2026-06-13T12:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150410488",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-glenmore+park-150410488",
+    "address": "2 Spinosa Place, Glenmore Park",
+    "price": "$1,012,000",
+    "beds": 3,
+    "baths": 2,
+    "cars": 1,
+    "landM2": 444,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150796812",
+    "url": "https://www.realestate.com.au/sold/property-villa-nsw-sylvania-150796812",
+    "address": "1/27 Endeavour Street, Sylvania",
+    "price": "$1,545,000",
+    "beds": 3,
+    "baths": 2,
+    "cars": 2,
+    "landM2": null,
+    "type": "Villa",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150458828",
+    "url": "https://www.realestate.com.au/property-house-nsw-revesby-150458828",
+    "address": "45 Marco Avenue, Revesby",
+    "price": "Price Guide $1,300,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 3,
+    "landM2": 538,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T11:30:00+10:00",
+        "start": "2026-06-13T11:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150803700",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-engadine-150803700",
+    "address": "25a Cambrai Avenue, Engadine",
+    "price": "$1,760,000",
+    "beds": 3,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 499.4,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150761028",
+    "url": "https://www.realestate.com.au/property-house-nsw-seven+hills-150761028",
+    "address": "52 Jean Street, Seven Hills",
+    "price": "For Sale",
+    "beds": 5,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 650,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150638496",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-seven+hills-150638496",
+    "address": "33 Jean Street, Seven Hills",
+    "price": "$1,250,000",
+    "beds": 3,
+    "baths": 1,
+    "cars": 2,
+    "landM2": 663.9,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150598892",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-seven+hills-150598892",
+    "address": "60 Janice Street, Seven Hills",
+    "price": "$1,350,000",
+    "beds": 4,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 556.4,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150461120",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-blacktown-150461120",
+    "address": "227 Flushcombe Road, Blacktown",
+    "price": "$1,321,000",
+    "beds": 5,
+    "baths": 2,
+    "cars": 3,
+    "landM2": 556,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150484492",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-quakers+hill-150484492",
+    "address": "12 Denton Grove, Quakers Hill",
+    "price": "$1,465,000",
+    "beds": 4,
+    "baths": 2,
+    "cars": 2,
+    "landM2": null,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150354328",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-quakers+hill-150354328",
+    "address": "110 Pye Road, Quakers Hill",
+    "price": "$1,448,000",
+    "beds": 4,
+    "baths": 2,
+    "cars": 2,
+    "landM2": null,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "149567252",
+    "url": "https://www.realestate.com.au/property-house-nsw-quakers+hill-149567252",
+    "address": "24 Isis Place, Quakers Hill",
+    "price": "Contact Agent",
+    "beds": 4,
+    "baths": 2,
+    "cars": 4,
+    "landM2": 560,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Under contract"
+  },
+  {
+    "id": "150569420",
+    "url": "https://www.realestate.com.au/property-house-nsw-greystanes-150569420",
+    "address": "41 Runyon Avenue, Greystanes",
+    "price": "Price Guide: $1,400,000 - $1,500,000",
+    "beds": 3,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 557,
+    "type": "House",
+    "inspections": [
+      {
+        "end": "2026-06-13T11:30:00+10:00",
+        "start": "2026-06-13T11:00:00+10:00"
+      }
+    ],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150782928",
+    "url": "https://www.realestate.com.au/property-house-nsw-greystanes-150782928",
+    "address": "10 Kalang Road, Greystanes",
+    "price": "contact agent",
+    "beds": 3,
+    "baths": 2,
+    "cars": 2,
+    "landM2": 556.4,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": null
+  },
+  {
+    "id": "150473516",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-northmead-150473516",
+    "address": "6 Harrison Street, Northmead",
+    "price": "$1,450,000",
+    "beds": 4,
+    "baths": 2,
+    "cars": 3,
+    "landM2": 556.4,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "150547892",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-kareela-150547892",
+    "address": "9 Inverness Place, Kareela",
+    "price": "Contact agent",
+    "beds": 3,
+    "baths": 2,
+    "cars": 1,
+    "landM2": 569.1,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "id": "149973660",
+    "url": "https://www.realestate.com.au/sold/property-house-nsw-blacktown-149973660",
+    "address": "5 Sullivan Street, Blacktown",
+    "price": "$1,240,000",
+    "beds": 4,
+    "baths": 3,
+    "cars": 2,
+    "landM2": 562.8,
+    "type": "House",
+    "inspections": [],
+    "auction": null,
+    "savedAt": "2026-06-12",
+    "status": "New",
+    "note": "Sold"
+  },
+  {
+    "address": "Inspection, , Tomorrow 9:00 am, , 3/183 Woronora Road, Engadine, , Add to plan",
+    "auction": null,
+    "baths": null,
+    "beds": null,
+    "cars": null,
+    "id": "151332096",
+    "inspections": [
+      {
+        "end": "2026-06-13T09:30:00+10:00",
+        "start": "2026-06-13T09:00:00+10:00"
+      }
+    ],
+    "landM2": null,
+    "note": null,
+    "price": "",
+    "savedAt": "2026-06-12",
+    "type": null,
+    "url": "https://www.realestate.com.au/property-townhouse-nsw-engadine-151332096",
+    "status": "New"
+  },
+  {
+    "address": "Inspection, , Tomorrow 9:00 am, , 17 Duck Street, Birkdale, , Add to plan",
+    "auction": null,
+    "baths": null,
+    "beds": null,
+    "cars": null,
+    "id": "151067052",
+    "inspections": [
+      {
+        "end": "2026-06-13T09:30:00+10:00",
+        "start": "2026-06-13T09:00:00+10:00"
+      }
+    ],
+    "landM2": null,
+    "note": null,
+    "price": "",
+    "savedAt": "2026-06-12",
+    "type": null,
+    "url": "https://www.realestate.com.au/property-house-qld-birkdale-151067052",
+    "status": "New"
+  },
+  {
+    "address": "Inspection, , Tomorrow 10:00 am, , 4/16 Oakwood Street, Sutherland, , Add to plan",
+    "auction": null,
+    "baths": null,
+    "beds": null,
+    "cars": null,
+    "id": "151458464",
+    "inspections": [
+      {
+        "end": "2026-06-13T10:30:00+10:00",
+        "start": "2026-06-13T10:00:00+10:00"
+      }
+    ],
+    "landM2": null,
+    "note": null,
+    "price": "",
+    "savedAt": "2026-06-12",
+    "type": null,
+    "url": "https://www.realestate.com.au/property-villa-nsw-sutherland-151458464",
+    "status": "New"
+  },
+  {
+    "address": "Inspection, , Tomorrow 10:00 am, , 16/4 Tuckwell Place, Macquarie Park, , Add to plan",
+    "auction": null,
+    "baths": null,
+    "beds": null,
+    "cars": null,
+    "id": "150828528",
+    "inspections": [
+      {
+        "end": "2026-06-13T10:30:00+10:00",
+        "start": "2026-06-13T10:00:00+10:00"
+      }
+    ],
+    "landM2": null,
+    "note": "Under contract",
+    "price": "",
+    "savedAt": "2026-06-12",
+    "type": null,
+    "url": "https://www.realestate.com.au/property-townhouse-nsw-macquarie+park-150828528",
+    "status": "New"
+  },
+  {
+    "address": "Inspection, , Tomorrow 10:00 am, , 2/47 Mimosa Street, Bexley, , Add to plan",
+    "auction": null,
+    "baths": null,
+    "beds": null,
+    "cars": null,
+    "id": "151158344",
+    "inspections": [
+      {
+        "end": "2026-06-13T10:30:00+10:00",
+        "start": "2026-06-13T10:00:00+10:00"
+      }
+    ],
+    "landM2": null,
+    "note": "Under contract",
+    "price": "",
+    "savedAt": "2026-06-12",
+    "type": null,
+    "url": "https://www.realestate.com.au/property-villa-nsw-bexley-151158344",
+    "status": "New"
+  },
+  {
+    "address": "Inspection, , Tomorrow 10:15 am, , 4/258 Port Hacking Road, Miranda, , Add to plan",
+    "auction": null,
+    "baths": null,
+    "beds": null,
+    "cars": null,
+    "id": "151195384",
+    "inspections": [
+      {
+        "end": "2026-06-13T10:45:00+10:00",
+        "start": "2026-06-13T10:15:00+10:00"
+      }
+    ],
+    "landM2": null,
+    "note": null,
+    "price": "",
+    "savedAt": "2026-06-12",
+    "type": null,
+    "url": "https://www.realestate.com.au/property-townhouse-nsw-miranda-151195384",
+    "status": "New"
+  }
+]
