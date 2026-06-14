@@ -461,10 +461,12 @@ function mergeIn(incoming) {
   incoming.forEach(n => {
     const old = byId.get(String(n.id));
     if (old) {
-      Object.assign(old, n, { status: old.status });  // fresh scrape wins, status preserved
+      // fresh data wins; keep local status unless it's untouched 'New' and incoming has one
+      const keep = (old.status && old.status !== 'New') ? old.status : (n.status || old.status || 'New');
+      Object.assign(old, n, { status: keep });
       updated++;
     } else {
-      data.push({ ...n, status: 'New' });
+      data.push({ ...n, status: n.status || 'New' });
       added++;
     }
   });
@@ -523,6 +525,18 @@ function renderAll() {
     `${data.length} saved · last scrape ${data.reduce((m,x) => x.savedAt > m ? x.savedAt : m, '')}`;
 }
 renderAll();
+
+/* Pull published data.json (if present in the repo) so phones/other devices get current data */
+fetch('data.json', { cache: 'no-store' })
+  .then(r => (r.ok ? r.json() : null))
+  .then(arr => {
+    if (Array.isArray(arr) && arr.length) {
+      const r = mergeIn(arr);
+      renderAll();
+      if (r.added || r.updated) console.log(`[data.json] merged: ${r.added} new, ${r.updated} updated`);
+    }
+  })
+  .catch(() => {});
 
 /* Live refresh when the Chrome extension pushes a new sync */
 window.addEventListener('rea-sync', (e) => {
