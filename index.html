@@ -93,7 +93,8 @@
   tr.r-offer td:first-child { box-shadow: inset 3px 0 0 var(--warn); }
   tr.r-gone td { opacity: .45; }
   tr.r-gone td.addr a, tr.r-gone td.num, tr.r-gone .bbc { text-decoration: line-through; text-decoration-color: var(--ink-2); }
-  .gone-tag { font-size: 11px; font-weight: 600; color: var(--warn); text-transform: uppercase; letter-spacing: .05em; text-decoration: none !important; display: inline-block; margin-top: 2px; }
+  .gone-tag { font-size: 11px; font-weight: 600; color: var(--warn); text-transform: uppercase; letter-spacing: .05em; text-decoration: none !important; display: inline-block; margin-top: 2px; cursor: pointer; }
+  .gone-tag:hover { opacity: .7; }
   .maps { font-size: 12px; color: var(--ink-2); text-decoration: none; }
   .maps:hover { color: var(--accent); }
 
@@ -303,6 +304,7 @@ function zoneOf(x) { return SUBURB_ZONE[suburbOf(x).toLowerCase()] || 'Other'; }
 
 /* Under contract / sold detection — "Auction Unless Sold Prior" is still active */
 function isGone(x) {
+  if (x.noteCleared) return false;  // user manually overrode a wrong flag
   if (x.note && /under contract|sold/i.test(x.note)) return true;
   const p = x.price || '';
   return /under\s+(contract|offer)/i.test(p) || /\bsold on\b/i.test(p) || /^sold\b/i.test(p.trim());
@@ -353,7 +355,7 @@ function renderTable() {
       : '<span style="color:var(--ink-2)">—</span>';
     const st = x.status || 'New';
     return `<tr class="r-${st.toLowerCase()}${isGone(x) ? ' r-gone' : ''}">
-      <td class="addr"><a href="${x.url}" target="_blank" rel="noopener">${street}</a><br><span class="suburb">${rest.join(',').trim()}</span>${isGone(x) ? '<br><span class="gone-tag">' + (/sold/i.test((x.note||'') + (x.price||'')) && !/unless sold/i.test(x.price||'') ? 'Sold' : 'Under contract') + '</span>' : ''}</td>
+      <td class="addr"><a href="${x.url}" target="_blank" rel="noopener">${street}</a><br><span class="suburb">${rest.join(',').trim()}</span>${isGone(x) ? '<br><span class="gone-tag" data-clear="' + x.id + '" title="Detected from: ' + (x.noteReason || 'unknown').replace(/"/g, '') + ' — click to clear if wrong">' + (/sold/i.test((x.note||'') + (x.price||'')) && !/unless sold/i.test(x.price||'') ? 'Sold' : 'Under contract') + ' ✕</span>' : (x.noteCleared ? '<br><span class="gone-tag" data-restore="' + x.id + '" style="color:var(--ink-2)" title="You cleared this flag — click to restore">flag cleared ↺</span>' : '')}</td>
       <td class="num">${x.priceNum ? '$' + x.priceNum.toLocaleString() : (x.price || '—')}</td>
       <td class="bbc"><b>${x.beds ?? '–'}</b> bd&nbsp; <b>${x.baths ?? '–'}</b> ba&nbsp; <b>${x.cars ?? '–'}</b> car</td>
       <td class="num">${x.landM2 ? x.landM2.toLocaleString() + ' m²' : '—'}</td>
@@ -370,6 +372,14 @@ function renderTable() {
   document.querySelectorAll('select.status').forEach(s => s.onchange = e => {
     const rec = data.find(x => String(x.id) === e.target.dataset.id);
     if (rec) { rec.status = e.target.value; save(); renderAll(); }
+  });
+  document.querySelectorAll('[data-clear]').forEach(el => el.onclick = () => {
+    const rec = data.find(x => String(x.id) === el.dataset.clear);
+    if (rec) { rec.noteCleared = true; save(); renderAll(); }
+  });
+  document.querySelectorAll('[data-restore]').forEach(el => el.onclick = () => {
+    const rec = data.find(x => String(x.id) === el.dataset.restore);
+    if (rec) { rec.noteCleared = false; save(); renderAll(); }
   });
 }
 
@@ -463,7 +473,9 @@ function mergeIn(incoming) {
     if (old) {
       // fresh data wins; keep local status unless it's untouched 'New' and incoming has one
       const keep = (old.status && old.status !== 'New') ? old.status : (n.status || old.status || 'New');
-      Object.assign(old, n, { status: keep });
+      // keep a manual "flag cleared" override only while the sync still flags it
+      const keepCleared = old.noteCleared && !!n.note;
+      Object.assign(old, n, { status: keep, noteCleared: keepCleared });
       updated++;
     } else {
       data.push({ ...n, status: n.status || 'New' });
